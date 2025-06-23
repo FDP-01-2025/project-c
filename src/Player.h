@@ -1,5 +1,7 @@
 #include <iostream>
+#include "Enemy.h"
 using namespace std;
+
 
 //Player struct
 struct Player
@@ -10,8 +12,8 @@ struct Player
     int items = 0;
 
     //Player functions 
-    void getDamage(){
-        life--;
+    void getDamage(const Enemy& enemy){
+        life -= enemy.attack();
     }
 
     void useItem(){

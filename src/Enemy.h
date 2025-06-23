@@ -6,18 +6,20 @@ using namespace std;
 struct Enemy
 {
     int life = 0;
-    int attack = 0;
+    int damage = 0;
     int mechanic = 0;
 
     //Enemies function
     void getDamage(const Player& player){
         life -= player.attack();
-    }
+    }lskdjsldkjs
 
-    void attack(){
-
+    int attack() const{
+        return damage;
     }
-    bool alive();
+    bool alive() const{
+        return life > 0;
+    };
 };
 
 //Enemies generator
