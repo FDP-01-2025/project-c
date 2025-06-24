@@ -1,5 +1,6 @@
+#pragma once
 #include <iostream>
-#include "Utilities.h"
+#include "Game.h"
 #include "Player.h"
 #include "Enemy.h"
 using namespace std;
@@ -12,22 +13,22 @@ void numCombat(int max, Player& player, Enemy& enemy){
         num[1] = randomNum(1, max);
     } 
     else{
-        cout<<"1   2   3   4   5";
+        cout<<"1   2   3   4   5"<<endl;
+        num[0] = randomNum(1, max);
         num[1] = randomNum(1, max);
-        num[2] = randomNum(1, max);
     }
 
     cin>>playerNum;
 
-    if (playerNum < 0 && playerNum > max)
+    if (playerNum < 0 || playerNum > max)
     {
         cout<<"It isn't a valid number"<<endl;
-        numCombat(max, player, enemy)
+        numCombat(max, player, enemy);
         return;
     }
     else
     {
-        if (num[1] == playerNum || num[2] == playerNum)
+        if (num[0] == playerNum || num[1] == playerNum)
         {
             cout<<"*ENEMY ATTACKS YOU*"<<endl;
             player.getDamage(enemy);
@@ -40,8 +41,14 @@ void numCombat(int max, Player& player, Enemy& enemy){
     }
 }
 
-void patternMemo(){
-
+void patternMemo(int max, Player& Player, Enemy& enemy){
+    int pattern[10] = {0}, playerPattern[10] = {0};
+    
+    for (int i = 0; i < max; i++)
+    {
+        pattern[i] = randomNum(1,9);
+    }
+    
 }
 
 void rockPaperScisors(){

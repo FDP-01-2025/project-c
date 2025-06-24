@@ -1,7 +1,9 @@
+#pragma once
 #include <iostream>
-#include "Player.h"
+#include "Utilities.h"
 using namespace std;
 
+struct Player;
 //Enemies struct
 struct Enemy
 {
@@ -10,9 +12,7 @@ struct Enemy
     int mechanic = 0;
 
     //Enemies function
-    void getDamage(const Player& player){
-        life -= player.attack();
-    }lskdjsldkjs
+    void getDamage(const Player& player);
 
     int attack() const{
         return damage;
