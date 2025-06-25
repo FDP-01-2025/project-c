@@ -6,7 +6,7 @@
 #include <iostream>
 using namespace std;
 
-//Auxiliar function declaration in Game.h completes here
+//Auxiliar function declaration in Game.h completes here.
 int randomNum(int min, int max) {
     static std::random_device rd;
     static std::mt19937 gen(rd());
