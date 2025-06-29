@@ -94,6 +94,3 @@ void numsMemo(int max, int attempts, int goal, Player& player, Enemy& enemy){
     }
 }
 
-void rockPaperScisors(){
-
-}

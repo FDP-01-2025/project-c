@@ -10,7 +10,7 @@ using namespace std;
 void game(){
     Player player;
     Enemy enemy = generateEnemy(1, 10000000, 1);
-    numsMemo(5, 3, 10, player, enemy);
+    rockPaperScisors(player, enemy);
 }
 
 //Auxiliar functions declarations and completes
