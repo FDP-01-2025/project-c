@@ -17,3 +17,4 @@ int randomNum(int min, int max) {
 void timer(int secs){
     this_thread::sleep_for(chrono::seconds(secs));
 }
+

@@ -94,6 +94,71 @@ void numsMemo(int max, int attempts, int goal, Player& player, Enemy& enemy){
     }
 }
 
-void rockPaperScisors(){
 
+
+
+void rockPaperScisors(Player& player, Enemy& enemy){
+    int enemyAction, action;
+
+    cout<<"Choose an action: "<<endl;
+    cout<<"1. Weak attak    2. Strong attak    3. Defense"<<endl;
+    cin>>action;
+
+    if (action < 1 || action > 3) {
+        cout << "It isn't a valid number" << endl;
+        rockPaperScisors(player, enemy);
+        return;
+    }
+
+    enemyAction = randomNum(1, 3);
+     cout << "Enemy chose: " << enemyAction << endl;
+
+    switch(action){
+
+    case 1: 
+        if (enemyAction == 1){
+            cout<<"Same action, no one loses life"<<endl;
+        }
+        else if (enemyAction == 2){
+            cout<<"You have hit the enemy"<<endl;
+             enemy.getDamage(player);
+        }
+
+        else {
+            cout<<"The enemy has hit you"<<endl;
+            player.getDamage(enemy);
+        }
+    break;
+
+    case 2: 
+        if (enemyAction == 2){
+            cout<<"Same action, no one loses life"<<endl;
+        }
+        else if (enemyAction == 3){
+            cout<<"You have hit the enemy"<<endl;
+             enemy.getDamage(player);
+        }
+
+        else {
+            cout<<"The enemy has hit you"<<endl;
+            player.getDamage(enemy);
+        }
+    break;
+
+    case 3: 
+        if (enemyAction == 3){
+            cout<<"Same action, no one loses life"<<endl;
+        }
+        else if (enemyAction == 1){
+            cout<<"You have hit the enemy"<<endl;
+             enemy.getDamage(player);
+        }
+
+        else {
+            cout<<"The enemy has hit you"<<endl;
+            player.getDamage(enemy);
+        }
+    break;
+
+    }
 }
