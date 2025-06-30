@@ -1,8 +1,5 @@
 #pragma once
-#include <iostream>
 #include "Enemy.h"
-using namespace std;
-
 
 //Player struct
 struct Player
@@ -13,33 +10,15 @@ struct Player
     int items = 0;
 
     //Player functions 
-    void getDamage(const Enemy& enemy){
-        life -= enemy.attack();
-    }
+    void getDamage(const Enemy& enemy);
 
-    void useItem(){
-        if (items != 0)
-        {
-            life++;
-            if (life > lifeMax) life = lifeMax;        
-            items--;
-        }
-        else cout<<"You haven't items to use"<<endl;
-    }
+    void useItem();
 
-    void addItem(){
-        items++;
-    }
+    void addItem();
 
-    void increaseAttack() {
-        damage++;
-    }
+    void increaseAttack();
 
-    int attack() const{
-        return damage;
-    }
+    int attack() const;
 
-    bool alive() const{
-        return life > 0;
-    }
+    bool alive() const;
 };

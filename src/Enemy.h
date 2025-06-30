@@ -13,17 +13,9 @@ struct Enemy
 
     //Enemies function
     void getDamage(const Player& player);
-
-    int attack() const{
-        return damage;
-    }
-    bool alive() const{
-        return life > 0;
-    };
+    int attack() const;
+    bool alive() const;
 };
 
 //Enemies generator
-Enemy generateEnemy(int life, int attack, int mechanic){
-    Enemy enemy = {life, attack, mechanic};
-    return enemy;
-}
+Enemy generateEnemy(int life, int attack, int mechanic);
