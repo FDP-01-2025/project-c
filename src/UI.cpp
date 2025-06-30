@@ -1,6 +1,5 @@
 #include "UI.h"
 #include <iostream>
-#include <windows.h>
 using namespace std;
 
 void worm(){
@@ -222,9 +221,8 @@ void principalMenu(){
 
     do {
 
-    system("cls");
+    system("clear");
 
-    SetConsoleOutputCP(CP_UTF8);
     cout<<""<<endl;
     cout<<""<<endl;
     cout << "██████╗░░█████╗░███╗░░██╗██████╗░░█████╗░███╗░░░███╗  ██████╗░██╗░░░██╗███╗░░██╗░██████╗░███████╗░█████╗░███╗░░██╗" << endl;

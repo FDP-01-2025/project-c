@@ -1,4 +1,4 @@
-#include "EnemiesMechanic.h"
+#include "EnemiesMecanic.h"
 #include "Game.h"
 #include <iostream>
 using namespace std;
@@ -41,6 +41,7 @@ void numCombat(int max, Player& player, Enemy& enemy){
 
 void numsMemo(int max, int attempts, int goal, Player& player, Enemy& enemy){
     int nums[10] = {0}, playerNums[10] = {0}, fails = 0, successes = 0;
+    string code, playerCode;
 
     do {
         bool areSimilar = true;
@@ -48,9 +49,9 @@ void numsMemo(int max, int attempts, int goal, Player& player, Enemy& enemy){
         cout << "Memorize the numbers:" << endl;
         for (int i = 0; i < max; i++) {
             nums[i] = randomNum(1, 9);
-            cout << nums[i];
+            code += to_string(nums[i]);
         }
-        cout << endl;
+        cout << code<<endl;
 
         cout << "Numbers disappear in: ";
         for (int j = 5; j >= 0; j--) {
@@ -61,16 +62,12 @@ void numsMemo(int max, int attempts, int goal, Player& player, Enemy& enemy){
         system("clear");
 
         cout << "Write the numbers:" << endl;
-        for (int k = 0; k < max; k++) {
-            cin >> playerNums[k];
-        }
+        cin>>playerCode;
 
-        for (int l = 0; l < max; l++) {
-            if (nums[l] != playerNums[l]) {
-                areSimilar = false;
-                break;
-            }        
-        }
+        if (code != playerCode) {
+            areSimilar = false;
+            break;
+        }        
 
         if (areSimilar) {
             cout << "*CORRECT!*" << endl;

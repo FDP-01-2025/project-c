@@ -1,5 +1,6 @@
 #include "Enemy.h"
 #include "Player.h"
+#include "EnemiesMecanic.h"
 
 struct Level
 {
