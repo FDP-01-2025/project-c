@@ -95,6 +95,24 @@ void numsMemo(int max, int attempts, int goal, Player& player, Enemy& enemy){
 void rockPaperScisors(Player& player, Enemy& enemy){
     int enemyAction, action;
 
+    enemyAction = randomNum(1, 3);
+    
+    switch (enemyAction)
+    {
+    case 1:
+        cout<<"It looks like enemy it's gona make a weak attack"<<endl;
+        break;
+    case 2:
+        cout<<"It looks like enemy it's gona make a strong attack"<<endl;
+        break;
+    case 3:
+        cout<<"It looks like enemy it's gona use protection"<<endl;
+        break;
+    }
+
+    timer(1);
+    system("clear");
+
     cout<<"Choose an action: "<<endl;
     cout<<"1. Weak attak    2. Strong attak    3. Defense"<<endl;
     cin>>action;
@@ -104,9 +122,6 @@ void rockPaperScisors(Player& player, Enemy& enemy){
         rockPaperScisors(player, enemy);
         return;
     }
-
-    enemyAction = randomNum(1, 3);
-     cout << "Enemy chose: " << enemyAction << endl;
 
     switch(action){
 

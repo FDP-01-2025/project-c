@@ -12,9 +12,4 @@ void orc();
 
 void snake();
 
-void mouse();
-
-
-
-
-    
+void mouse();    
