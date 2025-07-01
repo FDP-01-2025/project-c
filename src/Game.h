@@ -5,5 +5,6 @@
 #include "Level.h"
 #include "Items.h"
 #include "UI.h"
+#include "Combat.h"
 
 void game();

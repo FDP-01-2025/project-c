@@ -5,9 +5,21 @@ Level levelGenerator(int num, Enemy& enemy){
     return level;
 }
 
+void nextLevel(bool playerAlive, bool enemyAlive, Player& player){
+        if (!playerAlive)
+    {
+        //game over
+    }
+    else if (!enemyAlive)
+    {
+        cout<<"You win"<<endl;
+        player.lvl++;
+        levelSelector(player.lvl, player);
+    }
+}
+
 void levelSelector(int lvl, Player& player){
     int parameters[3];
-    Player Player = player;
     Enemy enemy;
     switch (lvl)
     {
@@ -16,6 +28,8 @@ void levelSelector(int lvl, Player& player){
         parameters[0] = 3;
         enemy = generateEnemy(3, 1, 1);
         levelGenerator(1, enemy);
+        combatMenu(parameters, 1, player, enemy);
+        nextLevel(player.alive(), enemy.alive(), player);
         break;
     case 2:
         parameters[0] = 3;
@@ -23,6 +37,7 @@ void levelSelector(int lvl, Player& player){
         parameters[2] = 4;
         enemy = generateEnemy(1, 10000, 2);
         levelGenerator(2, enemy);
+        cout<<"Funciona"<<endl;
         break;
     case 3:
         enemy = generateEnemy(5, 1, 3);

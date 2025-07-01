@@ -3,36 +3,28 @@
 //This menu apears when you enter in a room
 void combatMenu(int parameters[], int size, Player& player, Enemy& enemy){
     int option;
-    cout<<"Select an option"<<endl;
-    cout<<"1. Fight\n2. Use Item"<<player.items<<"\n3. Exit"<<endl;
-    cin>>option;
+    do
+    {    
+        cout<<"Select an option"<<endl;
+        cout<<"1. Fight\n2. Use Item "<<player.items<<"\n3. Exit"<<endl;
+        cin>>option;
 
-    switch (option)
-    {
-    case 1:
-        fight(parameters, size, player, enemy);
-        break;
-    case 2:
-        useItem(player);
-        break;
-    case 3:
-        exxit();
-        break;
-    default:
-        cout<<"It isn't a valid option"<<endl;
-        break;
-    }
-}
-
-//This starts the fight (mecanic)
-void fight(int parameters[], int size, Player& player, Enemy& enemy){
-    playEnemyAttack(enemy.mecanic, parameters, size, player, enemy);
-}
-void useItem(Player& player){
-    player.useItem();
-}
-void exxit(){
-    exit(0);
+        switch (option)
+        {
+        case 1:
+            playEnemyAttack(enemy.mecanic, parameters, size, player, enemy);
+            break;
+        case 2:
+            player.useItem();
+            break;
+        case 3:
+            exit(0);
+            break;
+        default:
+            cout<<"It isn't a valid option"<<endl;
+            break;
+        }
+    }while (player.alive() && enemy.alive());    
 }
 
 //This select the mecanic of the enemy

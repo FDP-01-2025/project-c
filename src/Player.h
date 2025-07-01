@@ -8,6 +8,7 @@ struct Player
     int lifeMax = 3;
     int damage = 1;
     int items = 0;
+    int lvl = 1;
 
     //Player functions 
     void getDamage(const Enemy& enemy);
