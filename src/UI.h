@@ -16,36 +16,8 @@ void mouse();
 
 void principalMenu();
 
-void selectNumber();
+void firstGame(int opcion);
 
-void invalidNumber();
+void secondGame(int opcion);
 
-void enemyAttacks();
-
-void youAttacks();
-
-void memorizeNumber();
-
-void numberDisappear();
-
-void writeNumber();
-
-void correct();
-
-void wrong();
-
-void weakAttack();
-
-void strongAttack();
-
-void protection();
-
-void chooseAction();
-
-void action();
-
-void sameAction();
-
-void enemyKill();
-
-void youKill();
+void thirdGame(int opcion);

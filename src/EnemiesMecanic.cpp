@@ -5,13 +5,13 @@ using namespace std;
 
 void numCombat(int max, Player& player, Enemy& enemy){
     int num[2] = {0}, playerNum;
-        selectNumber();
+        firstGame(1);
     if (max == 3){
-        cout<<"1    2   3"<<endl;
+        firstGame(2);
         num[1] = randomNum(1, max);
     } 
     else{
-        cout<<"1   2   3   4   5"<<endl;
+        firstGame(3);
         num[0] = randomNum(1, max);
         num[1] = randomNum(1, max);
     }
@@ -20,7 +20,7 @@ void numCombat(int max, Player& player, Enemy& enemy){
 
     if (playerNum < 0 || playerNum > max)
     {
-        invalidNumber();
+        firstGame(4);
         numCombat(max, player, enemy);
         return;
     }
@@ -28,12 +28,12 @@ void numCombat(int max, Player& player, Enemy& enemy){
     {
         if (num[0] == playerNum || num[1] == playerNum)
         {
-            enemyAttacks();
+            firstGame(5);
             player.getDamage(enemy);
         }
         else
         {
-            youAttacks();
+            firstGame(6);
             enemy.getDamage(player);
         }
     }
@@ -47,14 +47,14 @@ void numsMemo(int max, int attempts, int goal, Player& player, Enemy& enemy){
         bool areSimilar = true;
         code = "";
 
-        memorizeNumber();
+        secondGame(1);
         for (int i = 0; i < max; i++) {
             nums[i] = randomNum(1, 9);
             code += to_string(nums[i]);
         }
         cout << code<<endl;
 
-        numberDisappear();
+        secondGame(2);
         for (int j = 5; j >= 0; j--) {
             cout << j << " " << flush;
             timer(1);
@@ -62,7 +62,7 @@ void numsMemo(int max, int attempts, int goal, Player& player, Enemy& enemy){
 
         system("clear");
 
-        writeNumber();
+       secondGame(3);
         cin>>playerCode;
 
         if (code != playerCode) {
@@ -70,22 +70,22 @@ void numsMemo(int max, int attempts, int goal, Player& player, Enemy& enemy){
         }        
 
         if (areSimilar) {
-            correct();
+            secondGame(4);
             successes++;
             if (max < 10) max++;
         } else {
-            wrong();
+            secondGame(5);
             fails++;
         }
 
     } while (fails < attempts && successes < goal);
     
     if (fails == attempts) {
-        enemyKill();
+        secondGame(6);
         player.getDamage(enemy);
     } 
     else if (successes == goal){
-        youKill();
+        secondGame(7);
         enemy.getDamage(player);
     }
 }
@@ -98,24 +98,24 @@ void rockPaperScisors(Player& player, Enemy& enemy){
     switch (enemyAction)
     {
     case 1:
-        weakAttack();
+        thirdGame(1);
         break;
     case 2:
-        strongAttack();
+        thirdGame(2);
         break;
     case 3:
-        protection();
+        thirdGame(3);
         break;
     }
 
     timer(1);
     system("clear");
 
-    chooseAction();
+    thirdGame(4);
     cin>>action;
 
     if (action < 1 || action > 3) {
-        invalidNumber();
+        thirdGame(5);
         rockPaperScisors(player, enemy);
         return;
     }
@@ -124,45 +124,45 @@ void rockPaperScisors(Player& player, Enemy& enemy){
 
     case 1: 
         if (enemyAction == 1){
-            sameAction();
+            thirdGame(6);
         }
         else if (enemyAction == 2){
-            youAttacks();
+            thirdGame(7);
              enemy.getDamage(player);
         }
 
         else {
-            enemyAttacks();
+            thirdGame(8);
             player.getDamage(enemy);
         }
     break;
 
     case 2: 
         if (enemyAction == 2){
-            sameAction();
+            thirdGame(6);
         }
         else if (enemyAction == 3){
-            youAttacks();
+            thirdGame(7);
              enemy.getDamage(player);
         }
 
         else {
-            enemyAttacks();
+            thirdGame(8);
             player.getDamage(enemy);
         }
     break;
 
     case 3: 
         if (enemyAction == 3){
-            sameAction();
+            thirdGame(6);
         }
         else if (enemyAction == 1){
-            youAttacks();
+            thirdGame(7);
              enemy.getDamage(player);
         }
 
         else {
-            enemyAttacks();
+            thirdGame(8);
             player.getDamage(enemy);
         }
     break;
