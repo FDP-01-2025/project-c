@@ -1,5 +1,7 @@
 #include "Game.h"
 
 void game(){
-    principalMenu();
+    Player player;
+
+    levelSelector(5, player);
 }

@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include "Utilities.h"
-#include "EnemiesMecanic.h"
 using namespace std;
 
 struct Player;

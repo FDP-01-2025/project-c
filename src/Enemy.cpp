@@ -13,17 +13,6 @@ bool Enemy::alive() const{
     return life > 0;
 };
 
-void playEnemyMecanic(int mecanic){
-    switch (mecanic)
-    {
-    case 1:
-        break;
-    
-    default:
-        break;
-    }
-}
-
 //Enemies generator
 Enemy generateEnemy(int life, int attack, int mechanic){
     Enemy enemy = {life, attack, mechanic};

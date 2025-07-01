@@ -1,6 +1,9 @@
 #include "Level.h"
 
-Level levelGenerator(int num, Enemy enemy);
+Level levelGenerator(int num, Enemy& enemy){
+    Level level = {num, enemy};
+    return level;
+}
 
 void levelSelector(int lvl, Player& player){
     int parameters[3];
@@ -18,7 +21,7 @@ void levelSelector(int lvl, Player& player){
         parameters[0] = 3;
         parameters[1] = 7;
         parameters[2] = 4;
-        enemy = generateEnemy(1, 10000000000, 2);
+        enemy = generateEnemy(1, 10000, 2);
         levelGenerator(2, enemy);
         break;
     case 3:
@@ -34,8 +37,9 @@ void levelSelector(int lvl, Player& player){
         parameters[0] = 5;
         parameters[1] = 12;
         parameters[2] = 5;
-        enemy = generateEnemy(1, 10000000000, 2);
+        enemy = generateEnemy(1, 10000, 2);
         levelGenerator(5, enemy);
+        cout<<"Funciona";
         break;
     case 6:
         enemy = generateEnemy(10, 5, 3);
@@ -50,7 +54,7 @@ void levelSelector(int lvl, Player& player){
         parameters[0] = 4;
         parameters[1] = 9;
         parameters[2] = 4;
-        enemy = generateEnemy(1, 100000000000, 2);
+        enemy = generateEnemy(1, 10000, 2);
         levelGenerator(8, enemy);
         break;
     //Alter path 9, 10. After lvl 3. Better rewards
