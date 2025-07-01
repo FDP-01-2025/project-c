@@ -98,7 +98,7 @@ void rockPaperScisors(Player& player, Enemy& enemy){
     switch (enemyAction)
     {
     case 1:
-        weakAttck();
+        weakAttack();
         break;
     case 2:
         strongAttack();

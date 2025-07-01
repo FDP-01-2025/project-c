@@ -1,6 +1,7 @@
 #pragma once
 #include "Player.h"
 #include "Enemy.h"
+#include "UI.h"
 
 void numCombat(int max, Player& player, Enemy& enemy);
 

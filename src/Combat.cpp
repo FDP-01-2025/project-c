@@ -1,5 +1,6 @@
 #include "Combat.h"
 
+//This menu apears when you enter in a room
 void combatMenu(int parameters[], int size, Player& player, Enemy& enemy){
     int option;
     cout<<"Select an option"<<endl;
@@ -12,20 +13,29 @@ void combatMenu(int parameters[], int size, Player& player, Enemy& enemy){
         fight(parameters, size, player, enemy);
         break;
     case 2:
-        useItem();
+        useItem(player);
         break;
     case 3:
-        exit();
+        exxit();
         break;
     default:
         cout<<"It isn't a valid option"<<endl;
         break;
     }
 }
-void fight(int parameters[], int size, Player& player, Enemy& enemy);
-void useItem();
-void exit();
 
+//This starts the fight (mecanic)
+void fight(int parameters[], int size, Player& player, Enemy& enemy){
+    playEnemyAttack(enemy.mecanic, parameters, size, player, enemy);
+}
+void useItem(Player& player){
+    player.useItem();
+}
+void exxit(){
+    exit(0);
+}
+
+//This select the mecanic of the enemy
 void playEnemyAttack(int mecanic, int parameters[], int size, Player& player, Enemy& enemy){
     switch (mecanic)
     {

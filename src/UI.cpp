@@ -323,7 +323,7 @@ void writeNumber(){
 
 }
 
-void corret(){
+void correct(){
     cout << R"(
 █▀▀ █▀█ █▀█ █▀█ █▀▀ █▀▀ ▀█▀ █
 █▄▄ █▄█ █▀▄ █▀▄ ██▄ █▄▄ ░█░ ▄

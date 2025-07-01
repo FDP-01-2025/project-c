@@ -34,7 +34,7 @@ void correct();
 
 void wrong();
 
-void weakAttck();
+void weakAttack();
 
 void strongAttack();
 
