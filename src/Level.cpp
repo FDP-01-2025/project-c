@@ -39,7 +39,6 @@ void levelSelector(int lvl, Player& player){
         parameters[2] = 5;
         enemy = generateEnemy(1, 10000, 2);
         levelGenerator(5, enemy);
-        cout<<"Funciona";
         break;
     case 6:
         enemy = generateEnemy(10, 5, 3);

@@ -45,6 +45,7 @@ void numsMemo(int max, int attempts, int goal, Player& player, Enemy& enemy){
 
     do {
         bool areSimilar = true;
+        code = "";
 
         cout << "Memorize the numbers:" << endl;
         for (int i = 0; i < max; i++) {
@@ -66,7 +67,6 @@ void numsMemo(int max, int attempts, int goal, Player& player, Enemy& enemy){
 
         if (code != playerCode) {
             areSimilar = false;
-            break;
         }        
 
         if (areSimilar) {
@@ -83,7 +83,8 @@ void numsMemo(int max, int attempts, int goal, Player& player, Enemy& enemy){
     if (fails == attempts) {
         cout << "Enemy is gonna kill you" << endl;
         player.getDamage(enemy);
-    } else {
+    } 
+    else if (successes == goal){
         cout << "You've defeated the enemy!" << endl;
         enemy.getDamage(player);
     }

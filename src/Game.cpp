@@ -2,6 +2,6 @@
 
 void game(){
     Player player;
-
-    levelSelector(5, player);
+    Enemy enemy = generateEnemy(1, 1000, 2);
+    numsMemo(3, 4, 10, player, enemy);
 }
