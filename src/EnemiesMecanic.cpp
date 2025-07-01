@@ -5,7 +5,7 @@ using namespace std;
 
 void numCombat(int max, Player& player, Enemy& enemy){
     int num[2] = {0}, playerNum;
-    cout<<"Selecciona un número"<<endl;
+        selectNumber();
     if (max == 3){
         cout<<"1    2   3"<<endl;
         num[1] = randomNum(1, max);
@@ -20,7 +20,7 @@ void numCombat(int max, Player& player, Enemy& enemy){
 
     if (playerNum < 0 || playerNum > max)
     {
-        cout<<"It isn't a valid number"<<endl;
+        invalidNumber();
         numCombat(max, player, enemy);
         return;
     }
@@ -28,12 +28,12 @@ void numCombat(int max, Player& player, Enemy& enemy){
     {
         if (num[0] == playerNum || num[1] == playerNum)
         {
-            cout<<"*ENEMY ATTACKS YOU*"<<endl;
+            enemyAttacks();
             player.getDamage(enemy);
         }
         else
         {
-            cout<<"*YOU ATTACK ENEMY*"<<endl;
+            youAttacks();
             enemy.getDamage(player);
         }
     }
@@ -47,14 +47,14 @@ void numsMemo(int max, int attempts, int goal, Player& player, Enemy& enemy){
         bool areSimilar = true;
         code = "";
 
-        cout << "Memorize the numbers:" << endl;
+        memorizeNumber();
         for (int i = 0; i < max; i++) {
             nums[i] = randomNum(1, 9);
             code += to_string(nums[i]);
         }
         cout << code<<endl;
 
-        cout << "Numbers disappear in: ";
+        numberDisappear();
         for (int j = 5; j >= 0; j--) {
             cout << j << " " << flush;
             timer(1);
@@ -62,7 +62,7 @@ void numsMemo(int max, int attempts, int goal, Player& player, Enemy& enemy){
 
         system("clear");
 
-        cout << "Write the numbers:" << endl;
+        writeNumber();
         cin>>playerCode;
 
         if (code != playerCode) {
@@ -70,22 +70,22 @@ void numsMemo(int max, int attempts, int goal, Player& player, Enemy& enemy){
         }        
 
         if (areSimilar) {
-            cout << "*CORRECT!*" << endl;
+            correct();
             successes++;
             if (max < 10) max++;
         } else {
-            cout << "*WRONG!*" << endl;
+            wrong();
             fails++;
         }
 
     } while (fails < attempts && successes < goal);
     
     if (fails == attempts) {
-        cout << "Enemy is gonna kill you" << endl;
+        enemyKill();
         player.getDamage(enemy);
     } 
     else if (successes == goal){
-        cout << "You've defeated the enemy!" << endl;
+        youKill();
         enemy.getDamage(player);
     }
 }
@@ -98,25 +98,24 @@ void rockPaperScisors(Player& player, Enemy& enemy){
     switch (enemyAction)
     {
     case 1:
-        cout<<"It looks like enemy it's gona make a weak attack"<<endl;
+        weakAttck();
         break;
     case 2:
-        cout<<"It looks like enemy it's gona make a strong attack"<<endl;
+        strongAttack();
         break;
     case 3:
-        cout<<"It looks like enemy it's gona use protection"<<endl;
+        protection();
         break;
     }
 
     timer(1);
     system("clear");
 
-    cout<<"Choose an action: "<<endl;
-    cout<<"1. Weak attak    2. Strong attak    3. Defense"<<endl;
+    chooseAction();
     cin>>action;
 
     if (action < 1 || action > 3) {
-        cout << "It isn't a valid number" << endl;
+        invalidNumber();
         rockPaperScisors(player, enemy);
         return;
     }
@@ -125,45 +124,45 @@ void rockPaperScisors(Player& player, Enemy& enemy){
 
     case 1: 
         if (enemyAction == 1){
-            cout<<"Same action, no one loses life"<<endl;
+            sameAction();
         }
         else if (enemyAction == 2){
-            cout<<"You have hit the enemy"<<endl;
+            youAttacks();
              enemy.getDamage(player);
         }
 
         else {
-            cout<<"The enemy has hit you"<<endl;
+            enemyAttacks();
             player.getDamage(enemy);
         }
     break;
 
     case 2: 
         if (enemyAction == 2){
-            cout<<"Same action, no one loses life"<<endl;
+            sameAction();
         }
         else if (enemyAction == 3){
-            cout<<"You have hit the enemy"<<endl;
+            youAttacks();
              enemy.getDamage(player);
         }
 
         else {
-            cout<<"The enemy has hit you"<<endl;
+            enemyAttacks();
             player.getDamage(enemy);
         }
     break;
 
     case 3: 
         if (enemyAction == 3){
-            cout<<"Same action, no one loses life"<<endl;
+            sameAction();
         }
         else if (enemyAction == 1){
-            cout<<"You have hit the enemy"<<endl;
+            youAttacks();
              enemy.getDamage(player);
         }
 
         else {
-            cout<<"The enemy has hit you"<<endl;
+            enemyAttacks();
             player.getDamage(enemy);
         }
     break;
