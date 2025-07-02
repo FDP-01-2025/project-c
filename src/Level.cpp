@@ -8,7 +8,10 @@ Level levelGenerator(int num, Enemy& enemy){
 void nextLevel(bool playerAlive, bool enemyAlive, Player& player, bool isInShortcut){
     if (!playerAlive)
     {
-        //game over
+        player = {3,3,1,0,1};
+        cout<<"GAME OVER"<<endl;
+        timer(3);
+        principalMenu();
     }
     else if (!enemyAlive)
     {
@@ -149,5 +152,8 @@ void levelSelector(int lvl, Player& player){
     default:
         break;
     }
-    levelSelector(player.lvl, player);
+    if (player.alive())
+    {
+        levelSelector(player.lvl, player);
+    }
 }

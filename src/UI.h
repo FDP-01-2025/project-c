@@ -1,3 +1,4 @@
+#include "Game.h"
 void worm();
 
 void spider();

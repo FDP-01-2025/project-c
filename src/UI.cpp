@@ -246,8 +246,7 @@ void principalMenu(){
     switch(opcion){
 
     case 1:
-            cout<<"Aqui inicia el juego :P";
-            menu = false; // Solo para probar si muestra el texto, dps lo quito 
+            game();
     break;
     
 
@@ -258,6 +257,7 @@ void principalMenu(){
         cout << "█▄█ █▀█ █░▀░█ ██▄   █▄█ ▀▄▀ ██▄ █▀▄" << endl;
 
         menu = false;
+        exit(0);
         break;
 
 
