@@ -14,7 +14,6 @@ void nextLevel(bool playerAlive, bool enemyAlive, Player& player){
     {
         cout<<"You win"<<endl;
         player.lvl++;
-        levelSelector(player.lvl, player);
     }
 }
 
@@ -23,7 +22,15 @@ void useShortcut(Player& player, int shortcut){
 
     if (player.alive())
     {
-        cout<<"Do you want to take a shortcut?"<<endl;
+        if (shortcut == 7)
+        {
+            cout<<"Do you want to take a shortcut?"<<endl;
+        }
+        else
+        {
+            cout<<"Do you want to take an alter path?"<<endl;
+            cout<<"You could win better rewards >;D"<<endl;
+        }
         cout<<"Enemies gona be more dangerous"<<endl;
         cout<<"1. Yes\n2. No"<<endl;
         cin>>option;
@@ -33,7 +40,6 @@ void useShortcut(Player& player, int shortcut){
         case 1:
             player.lvl = shortcut;
             cout<<"Entering the shortcut >:)"<<endl;
-            levelSelector(player.lvl, player);
             break;
         case 2:
             cout<<"Continuing normal path"<<endl;
@@ -47,9 +53,8 @@ void useShortcut(Player& player, int shortcut){
 }
 
 void levelSelector(int lvl, Player& player){
-    int parameters[3];
+    int parameters[3], shortcut;
     Enemy enemy;
-    int shortcut;  
 
     switch (lvl)
     {
@@ -71,7 +76,6 @@ void levelSelector(int lvl, Player& player){
         combatMenu(parameters, 3, player, enemy);
         nextLevel(player.alive(), enemy.alive(), player);
         useShortcut(player, shortcut);
-        
         break;
     case 3:
         shortcut = 9;
@@ -85,6 +89,8 @@ void levelSelector(int lvl, Player& player){
         parameters[0] = 5;
         enemy = generateEnemy(6, 1, 1);
         levelGenerator(4, enemy);
+        combatMenu(parameters, 1, player, enemy);
+        nextLevel(player.alive(), enemy.alive(), player);
         break;
     case 5:
         parameters[0] = 5;
@@ -92,15 +98,22 @@ void levelSelector(int lvl, Player& player){
         parameters[2] = 5;
         enemy = generateEnemy(1, 10000, 2);
         levelGenerator(5, enemy);
+        combatMenu(parameters, 3, player, enemy);
+        nextLevel(player.alive(), enemy.alive(), player);
         break;
     case 6:
+        //Mañana arregla esto para que no avance al atajo. Arregla tmb la mecanica de memoria
         enemy = generateEnemy(10, 5, 3);
         levelGenerator(6, enemy);
+        combatMenu(parameters, 0, player, enemy);
+        nextLevel(player.alive(), enemy.alive(), player);//
         break;
     //Shortcut 7, 8. After lvl 2. skip 3-5
     case 7:
         enemy = generateEnemy(4, 2, 3);
         levelGenerator(7, enemy);
+        combatMenu(parameters, 0, player, enemy);
+        nextLevel(player.alive(), enemy.alive(), player);
         break;
     case 8:
         parameters[0] = 4;
@@ -108,19 +121,28 @@ void levelSelector(int lvl, Player& player){
         parameters[2] = 4;
         enemy = generateEnemy(1, 10000, 2);
         levelGenerator(8, enemy);
+        combatMenu(parameters, 3, player, enemy);
+        nextLevel(player.alive(), enemy.alive(), player);
+        player.lvl = 6;
         break;
     //Alter path 9, 10. After lvl 3. Better rewards
     case 9:
         parameters[0] = 5;
         enemy = generateEnemy(7, 2, 1);
         levelGenerator(9, enemy);
+        combatMenu(parameters, 1, player, enemy);
+        nextLevel(player.alive(), enemy.alive(), player);
         break;
     case 10:
         enemy = generateEnemy(8, 3, 3);
         levelGenerator(10, enemy);
+        combatMenu(parameters, 0, player, enemy);
+        nextLevel(player.alive(), enemy.alive(), player);
+        player.lvl = 6;
         break;
 
     default:
         break;
     }
+    levelSelector(player.lvl, player);
 }
