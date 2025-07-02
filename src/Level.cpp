@@ -5,8 +5,8 @@ Level levelGenerator(int num, Enemy& enemy){
     return level;
 }
 
-void nextLevel(bool playerAlive, bool enemyAlive, Player& player){
-        if (!playerAlive)
+void nextLevel(bool playerAlive, bool enemyAlive, Player& player, bool isInShortcut){
+    if (!playerAlive)
     {
         //game over
     }
@@ -14,6 +14,7 @@ void nextLevel(bool playerAlive, bool enemyAlive, Player& player){
     {
         cout<<"You win"<<endl;
         player.lvl++;
+        prizes(player, isInShortcut);
     }
 }
 
@@ -56,6 +57,7 @@ void useShortcut(Player& player, int shortcut){
 void levelSelector(int lvl, Player& player){
     int parameters[3], shortcut;
     Enemy enemy;
+    bool isInShortcut = false;
 
     switch (lvl)
     {
@@ -65,7 +67,7 @@ void levelSelector(int lvl, Player& player){
         enemy = generateEnemy(3, 1, 1);
         levelGenerator(1, enemy);
         combatMenu(parameters, 1, player, enemy);
-        nextLevel(player.alive(), enemy.alive(), player);
+        nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
         break;
     case 2:
         shortcut = 7;
@@ -75,7 +77,7 @@ void levelSelector(int lvl, Player& player){
         enemy = generateEnemy(1, 10000, 2);
         levelGenerator(2, enemy);
         combatMenu(parameters, 3, player, enemy);
-        nextLevel(player.alive(), enemy.alive(), player);
+        nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
         useShortcut(player, shortcut);
         break;
     case 3:
@@ -83,7 +85,7 @@ void levelSelector(int lvl, Player& player){
         enemy = generateEnemy(5, 1, 3);
         levelGenerator(3, enemy);
         combatMenu(parameters, 0, player, enemy);
-        nextLevel(player.alive(), enemy.alive(), player);
+        nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
         useShortcut(player, shortcut);
         break;
     case 4:
@@ -91,7 +93,7 @@ void levelSelector(int lvl, Player& player){
         enemy = generateEnemy(6, 1, 1);
         levelGenerator(4, enemy);
         combatMenu(parameters, 1, player, enemy);
-        nextLevel(player.alive(), enemy.alive(), player);
+        nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
         break;
     case 5:
         parameters[0] = 5;
@@ -100,21 +102,21 @@ void levelSelector(int lvl, Player& player){
         enemy = generateEnemy(1, 10000, 2);
         levelGenerator(5, enemy);
         combatMenu(parameters, 3, player, enemy);
-        nextLevel(player.alive(), enemy.alive(), player);
+        nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
         break;
     case 6:
         //arregla esto para que no avance al atajo
         enemy = generateEnemy(10, 5, 3);
         levelGenerator(6, enemy);
         combatMenu(parameters, 0, player, enemy);
-        nextLevel(player.alive(), enemy.alive(), player);
+        nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
         break;
     //Shortcut 7, 8. After lvl 2. skip 3-5
     case 7:
         enemy = generateEnemy(4, 2, 3);
         levelGenerator(7, enemy);
         combatMenu(parameters, 0, player, enemy);
-        nextLevel(player.alive(), enemy.alive(), player);
+        nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
         break;
     case 8:
         parameters[0] = 4;
@@ -123,22 +125,24 @@ void levelSelector(int lvl, Player& player){
         enemy = generateEnemy(1, 10000, 2);
         levelGenerator(8, enemy);
         combatMenu(parameters, 3, player, enemy);
-        nextLevel(player.alive(), enemy.alive(), player);
+        nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
         player.lvl = 6;
         break;
     //Alter path 9, 10. After lvl 3. Better rewards
     case 9:
+        isInShortcut = true;
         parameters[0] = 5;
         enemy = generateEnemy(7, 2, 1);
         levelGenerator(9, enemy);
         combatMenu(parameters, 1, player, enemy);
-        nextLevel(player.alive(), enemy.alive(), player);
+        nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
         break;
     case 10:
+        isInShortcut = true;
         enemy = generateEnemy(8, 3, 3);
         levelGenerator(10, enemy);
         combatMenu(parameters, 0, player, enemy);
-        nextLevel(player.alive(), enemy.alive(), player);
+        nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
         player.lvl = 6;
         break;
 
