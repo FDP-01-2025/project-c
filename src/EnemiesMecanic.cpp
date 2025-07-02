@@ -39,20 +39,19 @@ void numCombat(int max, Player& player, Enemy& enemy){
     }
 }
 
-void numsMemo(int max, int attempts, int goal, Player& player, Enemy& enemy){
-    int nums[10] = {0}, playerNums[10] = {0}, fails = 0, successes = 0;
+void numsMemo(int max, int goal, int attempts, Player& player, Enemy& enemy) {
+    int nums[10] = {0}, fails = 0, successes = 0;
     string code, playerCode;
 
     do {
-        bool areSimilar = true;
         code = "";
-
         secondGame(1);
+
         for (int i = 0; i < max; i++) {
             nums[i] = randomNum(1, 9);
             code += to_string(nums[i]);
         }
-        cout << code<<endl;
+        cout << code << endl;
 
         secondGame(2);
         for (int j = 5; j >= 0; j--) {
@@ -61,15 +60,10 @@ void numsMemo(int max, int attempts, int goal, Player& player, Enemy& enemy){
         }
 
         system("clear");
+        secondGame(3);
+        cin >> playerCode;
 
-       secondGame(3);
-        cin>>playerCode;
-
-        if (code != playerCode) {
-            areSimilar = false;
-        }        
-
-        if (areSimilar) {
+        if (code == playerCode) {
             secondGame(4);
             successes++;
             if (max < 10) max++;
@@ -79,16 +73,17 @@ void numsMemo(int max, int attempts, int goal, Player& player, Enemy& enemy){
         }
 
     } while (fails < attempts && successes < goal);
-    
+
     if (fails == attempts) {
         secondGame(6);
         player.getDamage(enemy);
     } 
-    else if (successes == goal){
+    else if (successes == goal) {
         secondGame(7);
         enemy.getDamage(player);
     }
 }
+
 
 void rockPaperScisors(Player& player, Enemy& enemy){
     int enemyAction, action;

@@ -52,6 +52,7 @@ void useShortcut(Player& player, int shortcut){
     }
 }
 
+//Levels operation
 void levelSelector(int lvl, Player& player){
     int parameters[3], shortcut;
     Enemy enemy;
@@ -102,11 +103,11 @@ void levelSelector(int lvl, Player& player){
         nextLevel(player.alive(), enemy.alive(), player);
         break;
     case 6:
-        //Mañana arregla esto para que no avance al atajo. Arregla tmb la mecanica de memoria
+        //arregla esto para que no avance al atajo
         enemy = generateEnemy(10, 5, 3);
         levelGenerator(6, enemy);
         combatMenu(parameters, 0, player, enemy);
-        nextLevel(player.alive(), enemy.alive(), player);//
+        nextLevel(player.alive(), enemy.alive(), player);
         break;
     //Shortcut 7, 8. After lvl 2. skip 3-5
     case 7:
