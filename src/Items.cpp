@@ -1,4 +1,6 @@
 #include "Items.h"
+#include <iostream>
+using namespace std;
 
 void prizes(Player& player, bool shortcut){
     if (shortcut)
