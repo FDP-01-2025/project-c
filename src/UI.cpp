@@ -2,7 +2,6 @@
 #include "Combat.h"
 #include "UI.h"
 #include <iostream>
-#include <windows.h> 
 using namespace std;
 
 
