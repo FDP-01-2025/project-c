@@ -1,4 +1,5 @@
 #include "Utilities.h"
+#include <windows.h>
 using namespace std;
 
 //Auxiliar functions
@@ -9,7 +10,7 @@ int randomNum(int min, int max) {
     return distrib(gen);
 }
 
-void timer(int secs){
-    this_thread::sleep_for(chrono::seconds(secs));
+void timer(int millis){
+    Sleep(millis * 1000);
 }
 
