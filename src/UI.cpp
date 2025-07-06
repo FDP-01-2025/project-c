@@ -1,15 +1,6 @@
 #include "Utilities.h"
 #include "Combat.h"
 #include "UI.h"
-#include <iostream>
-using namespace std;
-
-
-//Function to change the color of a cout
-void setColor(int color) {
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(hConsole, color);
-}
 
 void worm(){
         cout << "                      ..   =:=.                                      " << endl;
@@ -36,7 +27,6 @@ void worm(){
 }
 
 void wormDamage(){
-    setColor(12); //This function changed the color to red
 
         cout << "                      ..   =:=.                                      " << endl;
     cout << "                  .:::::::::-+.                                      " << endl;
@@ -59,7 +49,6 @@ void wormDamage(){
     cout << "                            :---::::::::::+:-=-.*=::.                " << endl;
     cout << "                              .    .++=...:::::-+.::.                " << endl;
     cout << "                                          .==......                  " << endl;
-    setColor(7);
 }
 
 void spider(){
@@ -87,7 +76,6 @@ void spider(){
 }
 
 void spiderDamage(){
-    setColor(12);
     cout << "       .=@%+-..   .:*@@@@@@@@+..   .:=#@@*.      " << endl;
     cout << "      =@******%@@%@#**%#--%****@@@@#******@+     " << endl;
     cout << "   ..@#**#%****#@****%+::::@*****@#***#%***#@.   " << endl;
@@ -108,7 +96,6 @@ void spiderDamage(){
     cout << "          .-@***@.              .@#**@:          " << endl;
     cout << "            .@***%.             *#*%*.           " << endl;
     cout << "             .-@%@.            .%@*.             " << endl;
-    setColor(7);
 
 }
 
@@ -143,7 +130,6 @@ void dragon(){
 }
 
 void dragonDamage(){
-    setColor(12);
      cout << "       ..                                        " << endl;
     cout << "     .=.                                          " << endl;
     cout << "   .+=         .-*+:.     .*#.                   " << endl;
@@ -170,7 +156,6 @@ void dragonDamage(){
     cout << "             :**########-=###################.   " << endl;
     cout << "             **########-:########-  .:---:.      " << endl;
     cout << "                 .. ..    .                      " << endl;
-setColor(7);
 }
 
 void knight(){
@@ -205,7 +190,6 @@ void knight(){
 }
 
 void knightDamage(){
-    setColor(12);
     cout << ":::::::::::::-+*++++-:::::::::::----" << endl;
     cout << ":::::::::::::=**#***=::::::::-------" << endl;
     cout << ":::::::::::::-++*#*-:::::::::-------" << endl;
@@ -233,7 +217,6 @@ void knightDamage(){
     cout << ".::::::::::#+*=::::-#+*=::::::::::::" << endl;
     cout << ":.:.::::::-#*#=::::-#**+-:::::::::::" << endl;
     cout << "...:::.:=**#*+-:::::+*####=:::::::::" << endl;
-setColor(7);
 }
 
 void slime(){
@@ -261,7 +244,6 @@ void slime(){
 }
 
 void slimeDamage(){
-    setColor(12);
     cout << "                     ----------------                   " << endl;
     cout << "                  -----=++++++++---=---                 " << endl;
     cout << "                ----=++++=------   -++---               " << endl;
@@ -281,7 +263,6 @@ void slimeDamage(){
     cout << "    :-----=++==----------------------------=+++=----    " << endl;
     cout << "       ----------------===============------------      " << endl;
     cout << "               :-------------------------.              " << endl;
-setColor(7);
 }
 
 void orc(){
@@ -315,7 +296,6 @@ void orc(){
 }
 
 void orcDamage(){
-    setColor(12);
         cout << "          #*=+*.                           " << endl;
     cout << "         ##+++++.                          " << endl;
     cout << "        *##*#**#*-                        " << endl;
@@ -343,7 +323,6 @@ void orcDamage(){
     cout << "               ++===**.  =*=====           " << endl;
     cout << "           -+++++++*#*. .**+======+:       " << endl;
     cout << "          -*####-             =%###+        " << endl;
-    setColor(7);
 }
 
 void snake(){
@@ -373,7 +352,6 @@ void snake(){
 }
 
 void snakeDamage(){
-    setColor(12);
        cout << "                                            =++%   " << endl;
     cout << "                                        ..  %=-=@  " << endl;
     cout << "                          :@. #######%##%@@--=--=- " << endl;
@@ -397,7 +375,6 @@ void snakeDamage(){
     cout << "       -@%.  .-+-:@                                " << endl;
     cout << "           @+ ...=@                                " << endl;
     cout << "             -@%%*                                 " << endl;
-    setColor(7);
 }
 
 void mouse(){
@@ -425,7 +402,6 @@ void mouse(){
 }
 
 void mouseDamage(){
-    setColor(12);
     cout << "      :%@+==+#@:        :@#==*@+      " << endl;
     cout << "    .@+==+#%%*=*#      *%=+#@%+=@.    " << endl;
     cout << "    #==*@+====@=@:.---=@*#====#%=#    " << endl;
@@ -447,7 +423,6 @@ void mouseDamage(){
     cout << "  @=        +#=====%#===+@*+@:       " << endl;
     cout << "   #@+.  .*@%:%==*@@@@@@+==#@%@*     " << endl;
     cout << "      .::.    -@@#+==+%*@@@%%@@%.    " << endl;
-    setColor(7);
 }
 
 void principalMenu(){
@@ -482,7 +457,7 @@ void principalMenu(){
     switch(opcion){
 
     case 1:
-            cout<<"Aqui inicia el juego :P";
+            game();
             menu = false; // Solo para probar si muestra el texto, dps lo quito 
     break;
     
@@ -494,6 +469,7 @@ void principalMenu(){
         cout << "█▄█ █▀█ █░▀░█ ██▄   █▄█ ▀▄▀ ██▄ █▀▄" << endl;
 
         menu = false;
+        exit(0);
         break;
 
 
@@ -575,23 +551,19 @@ void firstGame(int opcion, Player& player){
     case 4 :
     system("cls");  
     showEnemy(player.lvl);
-    setColor(12);
  cout << R"(
     █ █▄░█ █░█ ▄▀█ █░░ █ █▀▄  █▄░█ █░█ █▀▄▀█ █▄▄ █▀▀ █▀█
     █ █░▀█ ▀▄▀ █▀█ █▄▄ █ █▄▀  █░▀█ █▄█ █░▀░█ █▄█ ██▄ █▀▄
 )"; 
-setColor(7);
     break;
     
     case 5:
     system("cls");  
     showEnemy(player.lvl);
-    setColor(12);
        cout << R"(
     █▀▀ █▄░█ █▀▀ █▀▄▀█ █▄█   ▄▀█ ▀█▀ ▀█▀ ▄▀█ █▀▀ █▄▀ █▀   █▄█ █▀█ █░█
     ██▄ █░▀█ ██▄ █░▀░█ ░█░   █▀█ ░█░ ░█░ █▀█ █▄▄ █░█ ▄█   ░█░ █▄█ █▄█
 )"; 
-setColor(7);
     break;
 
     case 6:
@@ -648,23 +620,19 @@ void secondGame(int opcion, Player& player){
         case 5:
          system("cls"); 
         showEnemy(player.lvl);
-        setColor(12);
         cout << R"(
     █░█░█ █▀█ █▀█ █▄░█ █▀▀ █
     ▀▄▀▄▀ █▀▄ █▄█ █░▀█ █▄█ ▄
 )";
-setColor(7);
         break;
 
         case 6:
          system("cls"); 
     showEnemy(player.lvl);
-        setColor(12);
         cout << R"(
     █▀▀ █▄░█ █▀▀ █▀▄▀█ █▄█   █ █▀   █▀▀ █▀█ █▄░█ █▄░█ ▄▀█   █▄▀ █ █░░ █░░   █▄█ █▀█ █░█
     ██▄ █░▀█ ██▄ █░▀░█ ░█░   █ ▄█   █▄█ █▄█ █░▀█ █░▀█ █▀█   █░█ █ █▄▄ █▄▄   ░█░ █▄█ █▄█
 )";
-setColor(7);
         break;
 
         case 7:
@@ -735,12 +703,10 @@ void thirdGame(int opcion, Player& player){
         case 5:
          system("cls"); 
     showEnemy(player.lvl);
-        setColor(12);
         cout << R"(
     █ █▄░█ █░█ ▄▀█ █░░ █ █▀▄   █▄░█ █░█ █▀▄▀█ █▄▄ █▀▀ █▀█
     █ █░▀█ ▀▄▀ █▀█ █▄▄ █ █▄▀   █░▀█ █▄█ █░▀░█ █▄█ ██▄ █▀▄
 )";
-setColor(7);
         break;
 
         case 6:
@@ -764,12 +730,10 @@ setColor(7);
         case 8:
          system("cls"); 
     showEnemy(player.lvl);
-        setColor(12);
  cout << R"(
     █▀▀ █▄░█ █▀▀ █▀▄▀█ █▄█   ▄▀█ ▀█▀ ▀█▀ ▄▀█ █▀▀ █▄▀ █▀   █▄█ █▀█ █░█
     ██▄ █░▀█ ██▄ █░▀░█ ░█░   █▀█ ░█░ ░█░ █▀█ █▄▄ █░█ ▄█   ░█░ █▄█ █▄█
 )"; 
-setColor(7);
         break;
     }
 }

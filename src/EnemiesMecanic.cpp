@@ -65,12 +65,10 @@ void numsMemo(int max, int goal, int attempts, Player& player, Enemy& enemy) {
 
         if (code == playerCode) {
             secondGame(4, player);
-            timer(2);
             successes++;
             if (max < 10) max++;
         } else {
             secondGame(5, player);
-            timer(2);
             fails++;
         }
 

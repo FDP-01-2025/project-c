@@ -1,4 +1,7 @@
-void setColor();
+#pragma once
+#include "Game.h"
+#include <iostream>
+using namespace std;
 
 void worm();
 
@@ -34,12 +37,8 @@ void mouseDamage();
 
 void principalMenu();
 
-void animationDamage(void (*normal)(), void (*damage)());
-
 void firstGame(int opcion, Player& player);
 
 void secondGame(int opcion, Player& player);
 
 void thirdGame(int opcion, Player& player);
-
-void showEnemy(int playerLevel);
