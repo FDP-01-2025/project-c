@@ -5,6 +5,8 @@ void combatMenu(int parameters[], int size, Player& player, Enemy& enemy){
     int option;
     do
     {   
+        timer(1);
+        clearScreen();
         cout<<"Select an option"<<endl;
         cout<<"1. Fight\n2. Use potion "<<player.items<<"\n3. Exit"<<endl;
         cout<<endl;

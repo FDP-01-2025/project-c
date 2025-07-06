@@ -59,7 +59,7 @@ void useShortcut(Player& player, int shortcut){
 
 //Levels operation
 void levelSelector(int lvl, Player& player){
-    int parameters[3], shortcut;
+    int parameters[3], shortcut, restart;
     Enemy enemy;
     bool isInShortcut = false;
 
@@ -114,6 +114,7 @@ void levelSelector(int lvl, Player& player){
         levelGenerator(6, enemy);
         combatMenu(parameters, 0, player, enemy);
         nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
+        player.lvl = 100;
         break;
     //Shortcut 7, 8. After lvl 2. skip 3-5
     case 7:
@@ -149,8 +150,28 @@ void levelSelector(int lvl, Player& player){
         nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
         player.lvl = 6;
         break;
+    
+    case 100:
+        cout<<"You've win the game"<<endl;
+        cout<<"Do you want to reset your progress?"<<endl;
+        cout<<"1. Yes\n2. No"<<endl;
+        cin>>restart;
+        if (restart == 1)
+        {
+            cout<<"Restarting"<<endl;
+            timer(2);
+            player = {3, 3, 1, 0, 1};
+            principalMenu();
+            break;
+        }
+        
+        break;
 
     default:
+        cout<<"DATA ERROR"<<endl;
+        cout<<"Restarting progress"<<endl;
+        timer(2);
+        player = {3, 3, 1, 0, 1};
         break;
     }
     if (player.alive())

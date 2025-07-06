@@ -5,7 +5,6 @@
 using namespace std;
 
 int main(){
-    UTF8Config();
     principalMenu();
     return 0;
 }

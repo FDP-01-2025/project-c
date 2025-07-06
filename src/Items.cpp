@@ -34,8 +34,8 @@ void prizes(Player& player, bool shortcut){
         {
             cout<<"You've win the great jackpot"<<endl;
             cout<<"You've win the game"<<endl;
+            player.lvl = 100;
         }
-        
     }
     //Same up but whit normal probabilities
     else
@@ -65,6 +65,8 @@ void prizes(Player& player, bool shortcut){
         {
             cout<<"You've win the great jackpot"<<endl;
             cout<<"You've win the game"<<endl;
+            player.lvl = 100;
         }
     }
+    timer(2);
 }

@@ -64,7 +64,6 @@ void numsMemo(int max, int goal, int attempts, Player& player, Enemy& enemy) {
             cout << j << " " << flush;
             timer(1);
         }
-
         clearScreen();
         secondGame(3, player);
         cin >> playerCode;
