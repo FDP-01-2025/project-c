@@ -59,7 +59,7 @@ void numsMemo(int max, int goal, int attempts, Player& player, Enemy& enemy) {
             timer(1);
         }
 
-        system("clear");
+        clearScreen();
         secondGame(3, player);
         cin >> playerCode;
 
@@ -104,7 +104,7 @@ void rockPaperScisors(Player& player, Enemy& enemy){
     }
 
     timer(1);
-    system("clear");
+    clearScreen();
 
     thirdGame(4, player);
     cin>>action;
