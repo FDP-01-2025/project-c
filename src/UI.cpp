@@ -5,16 +5,6 @@
 #ifdef _WIN32
 #include <windows.h>
 #endif
-using namespace std;
-
-void clearScreen() //Functional clear screen function for Linux and Windows
-{
-#ifdef _WIN32
-    std::system("cls");
-#else
-    std::system("clear");
-#endif
-}
 
 void setColor(int color)
 {
@@ -23,8 +13,8 @@ void setColor(int color)
     SetConsoleTextAttribute(hConsole, static_cast<WORD>(color));
 #else
     static const int ansiFg[16] = {
-        30, 34, 32, 36, 31, 35, 33, 37,  
-        90, 94, 92, 96, 91, 95, 93, 97    
+        30, 34, 32, 36, 31, 35, 33, 37, 
+        90, 94, 92, 96, 91, 95, 93, 97   
     };
 
     if (color < 0 || color > 15) {
@@ -32,6 +22,15 @@ void setColor(int color)
     } else {
         std::cout << "\033[" << ansiFg[color] << "m";
     }
+#endif
+}
+
+void clearScreen() //Functional clear screen function for Linux and Windows
+{
+#ifdef _WIN32
+    std::system("cls");
+#else
+    std::system("clear");
 #endif
 }
 
@@ -541,7 +540,6 @@ void showEnemy(int playerLevel){
     case 8: snake(); break;
     case 9: mouse(); break;
     case 10:orc(); break;
-    default: cout << "Nivel inválido\n"; break;
 }
 
 }
@@ -558,17 +556,17 @@ void showEnemyDamage(int playerLevel){
     case 8: snakeDamage(); break;
     case 9: mouseDamage(); break;
     case 10:orcDamage(); break;
-    default: cout << "Nivel inválido\n"; break;
+ 
 }
 
 }
 
 void animationDamage(void (*normal)(int), void (*damage)(int), int nivel) {
     //Takes function parameters
-    system("cls");
+   clearScreen();
     damage(nivel);
     timer(1);
-    system("cls");
+    clearScreen();
     normal(nivel);
 }
 
@@ -576,7 +574,7 @@ void firstGame(int opcion, Player& player){
 
     switch (opcion){
     case 1:
-     system("cls"); 
+     clearScreen();
     showEnemy(player.lvl);
     cout<< R"(
     █▀ █▀▀ █░░ █▀▀ █▀▀ ▀█▀   ▄▀█   █▄░█ █░█ █▀▄▀█ █▄▄ █▀▀ █▀█
@@ -599,7 +597,7 @@ void firstGame(int opcion, Player& player){
     break;
     
     case 4 :
-    system("cls");  
+    clearScreen();  
     showEnemy(player.lvl);
     setColor(12);
  cout << R"(
@@ -610,7 +608,7 @@ setColor(7);
     break;
     
     case 5:
-    system("cls");  
+   clearScreen();  
     showEnemy(player.lvl);
     setColor(12);
        cout << R"(
@@ -621,7 +619,7 @@ setColor(7);
     break;
 
     case 6:
-    system("cls");  
+    clearScreen(); 
     showEnemy(player.lvl);
     animationDamage(showEnemy, showEnemyDamage, player.lvl);
          cout << R"(
@@ -638,7 +636,7 @@ void secondGame(int opcion, Player& player){
     
     switch(opcion){
         case 1 :
-         system("cls"); 
+        clearScreen();
     showEnemy(player.lvl);
         cout << R"(
     █▀▄▀█ █▀▀ █▀▄▀█ █▀█ █▀█ █ ▀█ █▀▀   ▀█▀ █░█ █▀▀   █▄░█ █░█ █▀▄▀█ █▄▄ █▀▀ █▀█ █▀ ▀
@@ -654,7 +652,7 @@ void secondGame(int opcion, Player& player){
         break;
 
         case 3:
-         system("cls"); 
+        clearScreen();
     showEnemy(player.lvl);
         cout << R"(
     █░█░█ █▀█ █ ▀█▀ █▀▀   ▀█▀ █░█ █▀▀   █▄░█ █░█ █▀▄▀█ █▄▄ █▀▀ █▀█ █▀ ▀
@@ -672,7 +670,7 @@ void secondGame(int opcion, Player& player){
         break;
 
         case 5:
-         system("cls"); 
+        clearScreen();
         showEnemy(player.lvl);
         setColor(12);
         cout << R"(
@@ -683,7 +681,7 @@ setColor(7);
         break;
 
         case 6:
-         system("cls"); 
+    clearScreen();
     showEnemy(player.lvl);
         setColor(12);
         cout << R"(
@@ -708,7 +706,7 @@ void thirdGame(int opcion, Player& player){
     switch(opcion){
         
         case 1 :
-         system("cls"); 
+        clearScreen(); 
        showEnemy(player.lvl);
         cout << R"(
     █ ▀█▀   █░░ █▀█ █▀█ █▄▀ █▀   █░░ █ █▄▀ █▀▀   █▀▀ █▄░█ █▀▀ █▀▄▀█ █▄█   █ ▀█▀ ▀ █▀   █▀▀ █▀█ █▄░█ ▄▀█ █▀▄▀█ ▄▀█ █▄▀ █▀▀   ▄▀█ 
@@ -720,7 +718,7 @@ void thirdGame(int opcion, Player& player){
         break;
 
         case 2:
-         system("cls"); 
+        clearScreen();
     showEnemy(player.lvl);
         cout << R"(
     █ ▀█▀   █░░ █▀█ █▀█ █▄▀ █▀   █░░ █ █▄▀ █▀▀   █▀▀ █▄░█ █▀▀ █▀▄▀█ █▄█   █ ▀█▀ ▀ █▀   █▀▀ █▀█ █▄░█ ▄▀█ █▀▄▀█ ▄▀█ █▄▀ █▀▀   ▄▀█
@@ -732,7 +730,7 @@ void thirdGame(int opcion, Player& player){
         break;
 
         case 3:
-         system("cls"); 
+       clearScreen();
     showEnemy(player.lvl);
         cout << R"(
     █ ▀█▀   █░░ █▀█ █▀█ █▄▀ █▀   █░░ █ █▄▀ █▀▀   █▀▀ █▄░█ █▀▀ █▀▄▀█ █▄█   █ ▀█▀ ▀ █▀   █▀▀ █▀█ █▄░█ ▄▀█   █░█ █▀ █▀▀
@@ -744,7 +742,7 @@ void thirdGame(int opcion, Player& player){
         break;
 
         case 4:
-         system("cls"); 
+        clearScreen();
     showEnemy(player.lvl);
          cout << R"(
     █▀▀ █░█ █▀█ █▀█ █▀ █▀▀   ▄▀█ █▄░█   ▄▀█ █▀▀ ▀█▀ █ █▀█ █▄░█ ▀
@@ -759,7 +757,7 @@ void thirdGame(int opcion, Player& player){
         break;
 
         case 5:
-         system("cls"); 
+        clearScreen();
     showEnemy(player.lvl);
         setColor(12);
         cout << R"(
@@ -770,7 +768,7 @@ setColor(7);
         break;
 
         case 6:
-         system("cls"); 
+        clearScreen();
     showEnemy(player.lvl);
      cout << R"(
     █▀ ▄▀█ █▀▄▀█ █▀▀   ▄▀█ █▀▀ ▀█▀ █ █▀█ █▄░█ ░   █▄░█ █▀█   █▀█ █▄░█ █▀▀   █░░ █▀█ █▀ █▀▀ █▀   █░░ █ █▀▀ █▀▀
@@ -788,7 +786,7 @@ setColor(7);
         break;
 
         case 8:
-         system("cls"); 
+        clearScreen(); 
     showEnemy(player.lvl);
         setColor(12);
  cout << R"(
@@ -799,3 +797,8 @@ setColor(7);
         break;
     }
 }
+
+
+
+
+

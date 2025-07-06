@@ -5,6 +5,8 @@ using namespace std;
 
 void setColor(int color);
 
+void clearScreen();
+
 void worm();
 
 void wormDamage();
