@@ -1,6 +1,13 @@
 #include "Utilities.h"
 #include "Player.h"
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <unistd.h>
+#endif
+
 using namespace std;
+
 
 //Auxiliar functions
 
@@ -13,8 +20,12 @@ int randomNum(int min, int max) {
 }
 
 //timer
-void timer(int secs){
-    this_thread::sleep_for(chrono::seconds(secs));
+void timer(int secs) {
+#ifdef _WIN32
+    Sleep(secs * 1000); // ms
+#else
+    sleep(secs); // s
+#endif
 }
 
 //Save game
