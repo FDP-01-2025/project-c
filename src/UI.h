@@ -3,6 +3,8 @@
 #include <iostream>
 using namespace std;
 
+void setColor(int color);
+
 void worm();
 
 void wormDamage();
@@ -37,8 +39,14 @@ void mouseDamage();
 
 void principalMenu();
 
+void animationDamage(void (*normal)(int), void (*damage)(int), int nivel);
+
 void firstGame(int opcion, Player& player);
 
 void secondGame(int opcion, Player& player);
 
 void thirdGame(int opcion, Player& player);
+
+void showEnemy(int playerLevel);
+
+void clearScreen();

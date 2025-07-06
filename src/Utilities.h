@@ -11,6 +11,6 @@ int randomNum(int min, int max);
 
 void timer(int secs);
 
-void save(const Player& player);
+void save(Player& player);
 
-void load(const Player& player);
+void load(Player& player);

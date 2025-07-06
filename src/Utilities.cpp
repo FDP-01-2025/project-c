@@ -31,6 +31,7 @@ void save(Player& player)
     {
         remove("data.txt");
         rename("temp.txt", "data.txt");
+        cout<<"SAVED"<<endl;
     }
     else
     {
@@ -49,6 +50,7 @@ void load(Player& player)
         if (file >> life >> lifeMax >> damage >> items >> lvl)
         {
             player = {life, lifeMax, damage, items, lvl};
+            cout<<"LOAD"<<endl;
         }
         else
         {
@@ -59,7 +61,7 @@ void load(Player& player)
     }
     else
     {
-        cout << "LOAD ERROR: File not found" << endl;
+        save(player);
     }
 }
 
