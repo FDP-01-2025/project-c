@@ -507,7 +507,6 @@ void principalMenu(){
 
     case 1:
             game();
-            menu = false; // Solo para probar si muestra el texto, dps lo quito 
     break;
     
 

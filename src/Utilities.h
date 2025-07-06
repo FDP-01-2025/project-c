@@ -5,6 +5,8 @@
 #include <chrono>
 #include <fstream>
 
+void UTF8Config();
+
 struct Player;
 //Auxiliar functions
 int randomNum(int min, int max);

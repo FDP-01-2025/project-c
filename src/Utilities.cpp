@@ -8,7 +8,11 @@
 
 using namespace std;
 
-
+void UTF8Config() {
+#ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8); //For Windows
+#endif
+}
 //Auxiliar functions
 
 //Ranodom number generator
