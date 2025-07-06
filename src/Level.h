@@ -4,6 +4,7 @@
 #include "Combat.h"
 #include "EnemiesMecanic.h"
 #include "Items.h"
+#include "UI.h"
 
 struct Level
 {
