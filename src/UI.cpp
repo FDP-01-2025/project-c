@@ -501,6 +501,7 @@ void principalMenu(){
     cout<<endl;
     cout<<endl;
     cin>>opcion;
+    cinControl();
 
     switch(opcion){
 

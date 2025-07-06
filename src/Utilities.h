@@ -14,3 +14,5 @@ void timer(int secs);
 void save(Player& player);
 
 void load(Player& player);
+
+bool cinControl();

@@ -17,6 +17,12 @@ void numCombat(int max, Player& player, Enemy& enemy){
     }
 
     cin>>playerNum;
+    if (cinControl())
+    {
+        numCombat(max, player, enemy);
+        return;
+    }
+    
 
     if (playerNum < 0 || playerNum > max)
     {
@@ -108,6 +114,12 @@ void rockPaperScisors(Player& player, Enemy& enemy){
 
     thirdGame(4, player);
     cin>>action;
+    if (cinControl())
+    {
+        rockPaperScisors(player, enemy);
+        return;
+    }
+    
 
     if (action < 1 || action > 3) {
         thirdGame(5, player);

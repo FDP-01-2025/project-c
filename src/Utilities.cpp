@@ -3,6 +3,8 @@
 using namespace std;
 
 //Auxiliar functions
+
+//Ranodom number generator
 int randomNum(int min, int max) {
     static std::random_device rd;
     static std::mt19937 gen(rd());
@@ -10,10 +12,12 @@ int randomNum(int min, int max) {
     return distrib(gen);
 }
 
+//timer
 void timer(int secs){
     this_thread::sleep_for(chrono::seconds(secs));
 }
 
+//Save game
 void save(Player& player)
 {
     ofstream temp("temp.txt");
@@ -39,6 +43,7 @@ void save(Player& player)
     }
 }
 
+//Load game
 void load(Player& player)
 {
     ifstream file("data.txt");
@@ -65,4 +70,13 @@ void load(Player& player)
     }
 }
 
-
+//Control in case imput != number
+bool cinControl(){
+    if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+            cout << "It isn't a valid option"<<endl;
+            return true;
+        }
+    else return false;
+}

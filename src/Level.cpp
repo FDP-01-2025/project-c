@@ -10,6 +10,7 @@ void nextLevel(bool playerAlive, bool enemyAlive, Player& player, bool isInShort
     {
         player = {3,3,1,0,1};
         cout<<"GAME OVER"<<endl;
+        save(player);
         timer(3);
         principalMenu();
     }
