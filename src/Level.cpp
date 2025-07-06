@@ -152,18 +152,29 @@ void levelSelector(int lvl, Player& player){
         break;
     
     case 100:
+        save(player);
         cout<<"You've win the game"<<endl;
         cout<<"Do you want to reset your progress?"<<endl;
         cout<<"1. Yes\n2. No"<<endl;
         cin>>restart;
-        if (restart == 1)
+        switch (restart)
         {
+        case 1:
             cout<<"Restarting"<<endl;
             timer(2);
             player = {3, 3, 1, 0, 1};
             principalMenu();
             break;
+        case 2:
+            save(player);
+            cout<<"Leaving the game"<<endl;
+            timer(2);
+            exit(0);        
+        default:
+            cout<<"It isn't a valid option"<<endl;
+            break;
         }
+        
         
         break;
 
