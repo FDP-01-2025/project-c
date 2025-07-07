@@ -43,12 +43,15 @@ void principalMenu();
 
 void animationDamage(void (*normal)(int), void (*damage)(int), int nivel);
 
-void firstGame(int opcion, Player& player);
+void firstGame(int option, Player& player);
 
-void secondGame(int opcion, Player& player);
+void secondGame(int option, Player& player);
 
-void thirdGame(int opcion, Player& player);
+void thirdGame(int option, Player& player);
 
 void showEnemy(int playerLevel);
 
 void clearScreen();
+
+void UTF8Config();
+

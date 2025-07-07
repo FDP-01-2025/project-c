@@ -82,7 +82,7 @@ void wormDamage(){
     cout << "                            :---::::::::::+:-=-.*=::.                " << endl;
     cout << "                              .    .++=...:::::-+.::.                " << endl;
     cout << "                                          .==......                  " << endl;
-    setColor(7);
+    setColor(7);//This function returns the text to its normal color.
 }
 
 void spider(){
@@ -480,7 +480,7 @@ void principalMenu(){
 
     do {
 
-    system("clear");
+    clearScreen();
 
     cout<<""<<endl;
     cout<<""<<endl;
@@ -570,15 +570,15 @@ void animationDamage(void (*normal)(int), void (*damage)(int), int nivel) {
     normal(nivel);
 }
 
-void firstGame(int opcion, Player& player){
+void firstGame(int option, Player& player){
 
-    switch (opcion){
+    switch (option){
     case 1:
      clearScreen();
     showEnemy(player.lvl);
     cout<< R"(
-    █▀ █▀▀ █░░ █▀▀ █▀▀ ▀█▀   ▄▀█   █▄░█ █░█ █▀▄▀█ █▄▄ █▀▀ █▀█
-    ▄█ ██▄ █▄▄ ██▄ █▄▄ ░█░   █▀█   █░▀█ █▄█ █░▀░█ █▄█ ██▄ █▀▄
+    █▀ █▀▀ █░░ █▀▀ █▀▀ ▀█▀   ▄▀█   █▄░█ █░█ █▀▄▀█ █▄▄ █▀▀ █▀█ ▄
+    ▄█ ██▄ █▄▄ ██▄ █▄▄ ░█░   █▀█   █░▀█ █▄█ █░▀░█ █▄█ ██▄ █▀▄ ▄
     )";
     break;
 
@@ -633,10 +633,10 @@ timer(1);
  
 }
 
-void secondGame(int opcion, Player& player){
+void secondGame(int option, Player& player){
    
     
-    switch(opcion){
+    switch(option){
         case 1 :
         clearScreen();
     showEnemy(player.lvl);
@@ -707,8 +707,9 @@ timer(1);
     }
 }
 
-void thirdGame(int opcion, Player& player){
-    switch(opcion){
+void thirdGame(int option, Player& player){
+
+    switch(option){
         
         case 1 :
         clearScreen(); 
@@ -803,7 +804,11 @@ setColor(7);
     }
 }
 
-
-
+void UTF8Config() {
+#ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8); //For Windows
+#else
+#endif
+}
 
 

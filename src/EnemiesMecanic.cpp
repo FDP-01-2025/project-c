@@ -89,7 +89,6 @@ void numsMemo(int max, int goal, int attempts, Player& player, Enemy& enemy) {
     }
 }
 
-
 void rockPaperScisors(Player& player, Enemy& enemy){
     int enemyAction, action;
 

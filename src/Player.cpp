@@ -32,3 +32,4 @@ int Player::attack() const{
 bool Player::alive() const{
     return life > 0;
 }
+

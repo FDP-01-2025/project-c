@@ -1,4 +1,5 @@
 #include "Utilities.h"
+#include "UI.h"
 #include "Player.h"
 #ifdef _WIN32
 #include <windows.h>
@@ -66,7 +67,8 @@ void load(Player& player)
         if (file >> life >> lifeMax >> damage >> items >> lvl)
         {
             player = {life, lifeMax, damage, items, lvl};
-            cout<<"LOAD"<<endl;
+            
+                cout << "LOAD"<<endl;
         }
         else
         {
@@ -91,3 +93,4 @@ bool cinControl(){
         }
     else return false;
 }
+
