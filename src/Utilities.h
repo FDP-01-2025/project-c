@@ -17,4 +17,8 @@ void save(Player& player);
 
 void load(Player& player);
 
+void infiniteSave(Player& player);
+
+void infiniteLoad(Player& player);
+
 bool cinControl();

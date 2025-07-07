@@ -1,24 +1,38 @@
 #include "Level.h"
-//Falta el guardado, hacer el final, imprimir los enemigos
-Level levelGenerator(int num, Enemy& enemy){
-    Level level = {num, enemy};
-    return level;
-}
 
-void nextLevel(bool playerAlive, bool enemyAlive, Player& player, bool isInShortcut){
+void nextLevel(bool playerAlive, bool enemyAlive, Player& player, bool isInShortcut, bool infinite){
     if (!playerAlive)
     {
-        player = {3,3,1,0,1};
+        player = {3,3,1,0,1,0};
         cout<<"GAME OVER"<<endl;
-        save(player);
+        if (infinite)
+        {
+            infiniteSave(player);
+        }
+        else
+        {
+            save(player);
+        }
         timer(3);
         principalMenu();
     }
     else if (!enemyAlive)
     {
         cout<<"You win"<<endl;
-        player.lvl++;
-        prizes(player, isInShortcut);
+        if (infinite)
+        {
+            player.lvl = randomNum(1,10);
+            player.infinite++;
+            cout<<"Enemies defeated: "<<player.infinite<<endl;
+            infinitePrizes(player);
+            infiniteSave(player);
+        }
+        else
+        {        
+            player.lvl++;
+            prizes(player, isInShortcut);
+            save(player);
+        }
     }
 }
 
@@ -57,7 +71,7 @@ void useShortcut(Player& player, int shortcut){
     }
 }
 
-//Levels operation
+//Levels operation/ Normal game
 void levelSelector(int lvl, Player& player){
     int parameters[3], shortcut, restart;
     Enemy enemy;
@@ -69,9 +83,8 @@ void levelSelector(int lvl, Player& player){
     case 1:
         parameters[0] = 3;
         enemy = generateEnemy(3, 1, 1);
-        levelGenerator(1, enemy);
         combatMenu(parameters, 1, player, enemy);
-        nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
+        nextLevel(player.alive(), enemy.alive(), player, isInShortcut, false);
         break;
     case 2:
         shortcut = 7;
@@ -79,58 +92,50 @@ void levelSelector(int lvl, Player& player){
         parameters[1] = 7;
         parameters[2] = 4;
         enemy = generateEnemy(1, 10000, 2);
-        levelGenerator(2, enemy);
         combatMenu(parameters, 3, player, enemy);
-        nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
+        nextLevel(player.alive(), enemy.alive(), player, isInShortcut, false);
         useShortcut(player, shortcut);
         break;
     case 3:
         shortcut = 9;
         enemy = generateEnemy(5, 1, 3);
-        levelGenerator(3, enemy);
         combatMenu(parameters, 0, player, enemy);
-        nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
+        nextLevel(player.alive(), enemy.alive(), player, isInShortcut, false);
         useShortcut(player, shortcut);
         break;
     case 4:
         parameters[0] = 5;
         enemy = generateEnemy(6, 1, 1);
-        levelGenerator(4, enemy);
         combatMenu(parameters, 1, player, enemy);
-        nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
+        nextLevel(player.alive(), enemy.alive(), player, isInShortcut, false);
         break;
     case 5:
         parameters[0] = 5;
         parameters[1] = 12;
         parameters[2] = 5;
         enemy = generateEnemy(1, 10000, 2);
-        levelGenerator(5, enemy);
         combatMenu(parameters, 3, player, enemy);
-        nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
+        nextLevel(player.alive(), enemy.alive(), player, isInShortcut, false);
         break;
     case 6:
-        //arregla esto para que no avance al atajo
         enemy = generateEnemy(10, 5, 3);
-        levelGenerator(6, enemy);
         combatMenu(parameters, 0, player, enemy);
-        nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
+        nextLevel(player.alive(), enemy.alive(), player, isInShortcut, false);
         player.lvl = 100;
         break;
     //Shortcut 7, 8. After lvl 2. skip 3-5
     case 7:
         enemy = generateEnemy(4, 2, 3);
-        levelGenerator(7, enemy);
         combatMenu(parameters, 0, player, enemy);
-        nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
+        nextLevel(player.alive(), enemy.alive(), player, isInShortcut, false);
         break;
     case 8:
         parameters[0] = 4;
         parameters[1] = 9;
         parameters[2] = 4;
         enemy = generateEnemy(1, 10000, 2);
-        levelGenerator(8, enemy);
         combatMenu(parameters, 3, player, enemy);
-        nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
+        nextLevel(player.alive(), enemy.alive(), player, isInShortcut, false);
         player.lvl = 6;
         break;
     //Alter path 9, 10. After lvl 3. Better rewards
@@ -138,16 +143,14 @@ void levelSelector(int lvl, Player& player){
         isInShortcut = true;
         parameters[0] = 5;
         enemy = generateEnemy(7, 2, 1);
-        levelGenerator(9, enemy);
         combatMenu(parameters, 1, player, enemy);
-        nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
+        nextLevel(player.alive(), enemy.alive(), player, isInShortcut, false);
         break;
     case 10:
         isInShortcut = true;
         enemy = generateEnemy(8, 3, 3);
-        levelGenerator(10, enemy);
         combatMenu(parameters, 0, player, enemy);
-        nextLevel(player.alive(), enemy.alive(), player, isInShortcut);
+        nextLevel(player.alive(), enemy.alive(), player, isInShortcut, false);
         player.lvl = 6;
         break;
     
@@ -188,5 +191,99 @@ void levelSelector(int lvl, Player& player){
     if (player.alive())
     {
         levelSelector(player.lvl, player);
+    }
+}
+
+void infiniteLevels(int lvl, Player& player){
+    int parameters[3];
+    Enemy enemy;
+    infiniteSave(player);
+
+    switch (lvl)
+    {
+    case 1:
+        parameters[0] = 3;        
+        if (randomNum(1,2) == 1)
+        {
+            parameters[0] = 5;
+        }
+        enemy = generateEnemy(randomNum(1,12), randomNum(1,9), 1);
+        combatMenu(parameters, 1, player, enemy);
+        nextLevel(player.alive(), enemy.alive(), player, false, true);
+        break;
+    case 2:
+        parameters[0] = randomNum(1,5);
+        parameters[1] = randomNum(1, 10);
+        parameters[2] = randomNum(1,4);
+        enemy = generateEnemy(1, 10000, 2);
+        combatMenu(parameters, 3, player, enemy);
+        nextLevel(player.alive(), enemy.alive(), player, false, true);
+        break;
+    case 3:
+        enemy = generateEnemy(randomNum(1,15), randomNum(1,9), 3);
+        combatMenu(parameters, 0, player, enemy);
+        nextLevel(player.alive(), enemy.alive(), player, false, true);
+        break;
+    case 4:
+        parameters[0] = 3;        
+        if (randomNum(1,2) == 1)
+        {
+            parameters[0] = 5;
+        }
+        enemy = generateEnemy(randomNum(1,12), randomNum(1,9), 1);
+        combatMenu(parameters, 1, player, enemy);
+        nextLevel(player.alive(), enemy.alive(), player, false, true);
+        break;
+    case 5:
+        parameters[0] = randomNum(1,6);
+        parameters[1] = randomNum(1, 10);
+        parameters[2] = randomNum(1,4);
+        enemy = generateEnemy(1, 10000, 2);
+        combatMenu(parameters, 3, player, enemy);
+        nextLevel(player.alive(), enemy.alive(), player, false, true);
+        break;
+    case 6:
+        enemy = generateEnemy(randomNum(1,15), randomNum(1,9), 3);
+        combatMenu(parameters, 0, player, enemy);
+        nextLevel(player.alive(), enemy.alive(), player, false, true);
+        break;
+    case 7:
+        enemy = generateEnemy(randomNum(1,15), randomNum(1,9), 3);
+        combatMenu(parameters, 0, player, enemy);
+        nextLevel(player.alive(), enemy.alive(), player, false, true);
+        break;
+    case 8:
+        parameters[0] = randomNum(1,7);
+        parameters[1] = randomNum(1, 10);
+        parameters[2] = randomNum(1,4);
+        enemy = generateEnemy(1, 10000, 2);
+        combatMenu(parameters, 3, player, enemy);
+        nextLevel(player.alive(), enemy.alive(), player, false, true);
+        break;
+    case 9:
+        parameters[0] = 3;        
+        if (randomNum(1,2) == 1)
+        {
+            parameters[0] = 5;
+        }
+        enemy = generateEnemy(randomNum(1,12), randomNum(1,9), 1);
+        nextLevel(player.alive(), enemy.alive(), player, false, true);
+        break;
+    case 10:
+        enemy = generateEnemy(randomNum(1,15), randomNum(1,9), 3);
+        combatMenu(parameters, 0, player, enemy);
+        nextLevel(player.alive(), enemy.alive(), player, false, true);
+        break;
+        
+    default:
+        cout<<"DATA ERROR"<<endl;
+        cout<<"Restarting progress"<<endl;
+        timer(2);
+        player = {3, 3, 1, 0, 1};
+        break;
+    }
+    if (player.alive())
+    {
+        infiniteLevels(player.lvl, player);
     }
 }

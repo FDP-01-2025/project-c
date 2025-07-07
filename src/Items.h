@@ -4,3 +4,5 @@
 using namespace std;
 
 void prizes(Player& player, bool shortcut);
+
+void infinitePrizes(Player& player);

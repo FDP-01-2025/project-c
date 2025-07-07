@@ -497,6 +497,7 @@ void principalMenu(){
     cout<<""<<endl;
     cout << "                                                 ▀█   ▀  █▀▀ ▀▄▀ █ ▀█▀" << endl;
     cout << "                                                 █▄   ▄  ██▄ █░█ █ ░█░ " << endl;
+    cout<<"                                                   3 Infinite"<<endl;
 
     cout<<endl;
     cout<<endl;
@@ -519,6 +520,10 @@ void principalMenu(){
         exit(0);
         menu = false;
         break;
+
+        case 3:
+            infiniteMode();
+            break;
 
 
     default:

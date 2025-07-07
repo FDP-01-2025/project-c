@@ -8,3 +8,5 @@
 #include "Combat.h"
 
 void game();
+
+void infiniteMode();

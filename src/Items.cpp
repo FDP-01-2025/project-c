@@ -47,16 +47,19 @@ void prizes(Player& player, bool shortcut){
             {
                 cout<<"You win a max life increase"<<endl;
                 player.lifeMax += 1;
+                win++;
             }
             if (randomNum(1,7) == 1)
             {
                 cout<<"You win a damage increase"<<endl;
                 player.damage += 1;
+                win++;
             }
             if (randomNum(1,2) == 1)
             {
                 cout<<"You win a life potion"<<endl;
                 player.items += 1;
+                win++;
             }
         } while (randomNum(1,3) == 1 && win != 3);
 
@@ -68,5 +71,26 @@ void prizes(Player& player, bool shortcut){
             player.lvl = 100;
         }
     }
+    timer(2);
+}
+
+void infinitePrizes(Player& player){
+    
+    do
+    {
+        if (randomNum(1,3) == 1 && player.life < 10)
+        {
+            cout<<"You win a max life increase"<<endl;
+            player.lifeMax += 1;
+        }
+        if (randomNum(1,5) == 1 && player.damage < 10)
+        {
+            cout<<"You win a damage increase"<<endl;
+            player.damage += 1;
+        }
+        cout<<"You win a life potion"<<endl;
+        player.items += 1;
+    } while (randomNum(1,3) == 1);
+
     timer(2);
 }
