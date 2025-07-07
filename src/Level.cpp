@@ -16,9 +16,11 @@ void nextLevel(bool playerAlive, bool enemyAlive, Player& player, bool isInShort
     }
     else if (!enemyAlive)
     {
+        
         cout<<"You win"<<endl;
         player.lvl++;
         prizes(player, isInShortcut);
+        loadingScreen();
     }
 }
 

@@ -55,3 +55,4 @@ void clearScreen();
 
 void UTF8Config();
 
+void loadingScreen();

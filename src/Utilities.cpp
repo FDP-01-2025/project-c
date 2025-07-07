@@ -68,7 +68,7 @@ void load(Player& player)
         {
             player = {life, lifeMax, damage, items, lvl};
             
-                cout << "LOAD"<<endl;
+                loadingScreen();
         }
         else
         {
