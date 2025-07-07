@@ -9,7 +9,7 @@ struct Player
     int damage = 1;
     int items = 0;
     int lvl = 1;
-
+    int infinite = 0;
     //Player functions 
     void getDamage(const Enemy& enemy);
 

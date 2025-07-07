@@ -83,6 +83,60 @@ void load(Player& player)
     }
 }
 
+//Save in infinite mode
+void infiniteSave(Player& player)
+{
+    ofstream temp("temp.txt");
+    bool saved = false;
+
+    if (temp.is_open())
+    {
+        temp<<player.life<<" "<<player.lifeMax<<" "<<player.damage<<" "<<player.items<<" "<<player.lvl<<" "<<player.infinite<<endl;
+        saved = true;
+    }
+
+    temp.close();
+
+    if (saved)
+    {
+        remove("infiniteData.txt");
+        rename("temp.txt", "infiniteData.txt");
+        cout<<"SAVED"<<endl;
+    }
+    else
+    {
+        cout<<"SAVE ERROR"<<endl;
+    }
+}
+
+//Load in infinite game
+void infiniteLoad(Player& player)
+{
+    ifstream file("infiniteData.txt");
+
+    if (file.is_open())
+    {
+        int life, lifeMax, damage, items, lvl, infinite;
+
+        if (file >> life >> lifeMax >> damage >> items >> lvl >> infinite)
+        {
+            player = {life, lifeMax, damage, items, lvl, infinite};
+            
+                cout << "LOAD"<<endl;
+        }
+        else
+        {
+            cout << "LOAD ERROR: Invalid file format" << endl;
+        }
+
+        file.close();
+    }
+    else
+    {
+        infiniteSave(player);
+    }
+}
+
 //Control in case imput != number
 bool cinControl(){
     if (cin.fail()) {
