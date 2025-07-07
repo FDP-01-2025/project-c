@@ -93,17 +93,56 @@ void rockPaperScisors(Player& player, Enemy& enemy){
     int enemyAction, action;
 
     enemyAction = randomNum(1, 3);
-    
+
     switch (enemyAction)
     {
     case 1:
-        thirdGame(1, player);
+        if (randomNum(1,2) == 1)
+        {
+            clearScreen();
+            showEnemy(player.lvl);
+            thirdGame(1, player);
+            thirdGame(randomNum(1,3), player);
+        }
+        else
+        {
+            clearScreen();
+            showEnemy(player.lvl);
+            thirdGame(randomNum(1,3), player);
+            thirdGame(1, player);
+        }
         break;
     case 2:
-        thirdGame(2, player);
+        if (randomNum(1,2) == 1)
+        {
+            clearScreen();
+            showEnemy(player.lvl);
+            thirdGame(2, player);
+            thirdGame(randomNum(1,3), player);
+        }
+        else
+        {
+            clearScreen();
+            showEnemy(player.lvl);
+            thirdGame(randomNum(1,3), player);
+            thirdGame(2, player);
+        }
         break;
     case 3:
-        thirdGame(3, player);
+        if (randomNum(1,2) == 1)
+        {
+            clearScreen();
+            showEnemy(player.lvl);
+            thirdGame(3, player);
+            thirdGame(randomNum(1,3), player);
+        }
+        else
+        {
+            clearScreen();
+            showEnemy(player.lvl);
+            thirdGame(randomNum(1,3), player);
+            thirdGame(3, player);
+        }
         break;
     }
 
