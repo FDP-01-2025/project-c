@@ -18,3 +18,4 @@ Enemy generateEnemy(int life, int attack, int mechanic){
     Enemy enemy = {life, attack, mechanic};
     return enemy;
 }
+
