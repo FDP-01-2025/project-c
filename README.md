@@ -4,17 +4,23 @@
 ## Descripción del Proyecto
 
 RANDOM DUNGEON
+
 Temática y Ambientación
+
 Random Dungeon es un juego de aventura y combate ambientado en una serie de calabozos llenos de peligro. En cada nivel, el jugador se enfrenta a enemigos como orcos, caballeros y dragones, cada uno custodiando la salida hacia el siguiente desafío.
 Cada calabozo plantea un nuevo entorno y desafío, donde el jugador debe avanzar usando estrategia, atención y un poco de suerte. La progresión por niveles refuerza la sensación de exploración, enfrentando obstáculos cada vez más complejos en un mundo de inspiración medieval y fantástica. El juego combina aventura, combate y toma de decisiones para superar a los jefes y llegar hasta el final.
 
+
 Mecánica Principal
+
 •	El jugador debe vencer a un enemigo por cada nivel para avanzar.
 •	Puede tomar atajos que le permiten llegar más rápido al último nivel o conseguir más objetos (como pociones de vida o mejoras de ataque).
 •	Si el jugador se queda sin vida, pierde el juego.
 •	Para ganar el jugador debe vencer al enemigo final en el último nivel.
 •	Existe una probabilidad de obtener objetos útiles después de cada victoria.
+
 Mecánicas específicas del Juego
+
 1.	Combate por números:
 o	Se presentan 3 o 5 números (según el nivel).
 o	El jugador elige uno; el enemigo elige al azar.
@@ -35,6 +41,7 @@ o	Se gana si se logra una cantidad establecida de aciertos.
 o	Se pierde si se alcanza una cantidad establecida de fallos.
 
 Idea General de la Jugabilidad
+
 El jugador interactúa con el juego exclusivamente a través del ingreso de números por teclado. No hay controles visuales ni movimientos, solo decisiones numéricas que definen el avance o el resultado de cada encuentro.
 •	Juego de un solo jugador, modo texto (consola).
 •	Avanza nivel por nivel enfrentando a enemigos.
@@ -43,7 +50,9 @@ El jugador interactúa con el juego exclusivamente a través del ingreso de núm
 •	Las mecánicas cambian o se vuelven más difíciles en niveles más altos (por ejemplo, más opciones en los juegos de azar o mayor número de dígitos a memorizar).
 
 Aplicación de Temas Vistos en Clase
+
 Variables y Tipos de Datos
+
 A lo largo del desarrollo del juego se utilizaron diferentes tipos de variables para representar los datos esenciales del jugador, los enemigos y la lógica de las mecánicas.
 Las variables de tipo int se usaron para representar opciones del menú, acciones del jugador, valores de vida, daño, niveles, y también para guardar los números que el jugador ingresa durante el juego.
 •	int enemyAction, action;
@@ -51,16 +60,20 @@ Las variables de tipo int se usaron para representar opciones del menú, accione
 •	    enemyAction = randomNum(1, 3);
 
 Las variables bool fueron útiles para controlar ciertos estados, como por ejemplo si un jugador continúa dentro de un menú, si ya ha ganado una ronda, o si se debe repetir una mecánica.
+
 •	void principalMenu(){
 •	    bool menu = true;
 
 También se usaron otros tipos como string y arreglos int[] para manejar secuencias en el juego de memoria.
+
 •	void numsMemo(int max, int goal, int attempts, Player& player, Enemy& enemy) {
 •	    int nums[10] = {0}, fails = 0, successes = 0;
 •	    string code, playerCode;
 
 Estructuras Condicionales (if, else, switch)
+
 Las sentencias if y else se usaron para validar entradas del jugador, como asegurarse de que los valores ingresados estén dentro de un rango permitido. Por ejemplo, si el jugador debía elegir un número entre 1 y 3, se verificaba que no ingresara valores fuera de ese rango.
+
 •	if (playerNum < 0 || playerNum > max)
 •	    {
 •	        firstGame(4, player);
@@ -70,6 +83,7 @@ Las sentencias if y else se usaron para validar entradas del jugador, como asegu
 
 
 También se usaron para la lógica del combate, por ejemplo, si el número elegido por el jugador coincide con el del enemigo, el jugador recibe daño; si no, el enemigo es el que recibe el daño.
+
 •	else
 •	    {
 •	        if (num[0] == playerNum || num[1] == playerNum)
@@ -84,7 +98,10 @@ También se usaron para la lógica del combate, por ejemplo, si el número elegi
 •	        }
 •	    }
 
+
 En los objetos aleatorios, se utilizó if para verificar si un número aleatorio coincide con un valor específico, lo que determinaba si el jugador obtenía un objeto o no.
+
+
 •	 if (randomNum(1,2) == 1)
 •	            {
 •	                cout<<"You win a max life increase"<<endl;
@@ -98,8 +115,11 @@ En los objetos aleatorios, se utilizó if para verificar si un número aleatorio
 •	                win++;
 •	            }
 •	
+
 Por otro lado, la estructura switch fue útil en:
 La navegación por los diferentes menús del juego (como el menú de inicio o las opciones dentro de cada nivel).
+
+
 •	 switch (option)
 •	        {
 •	        case 1:
@@ -118,6 +138,8 @@ La navegación por los diferentes menús del juego (como el menú de inicio o la
 •	        }
 
 En funciones como playEnemyAttack y rockPaperScisors, donde el valor pasado determina qué tipo de mecánica se ejecuta o qué acción realiza el enemigo:
+
+
 •	void playEnemyAttack(int mecanic, int parameters[], int size, Player& player, Enemy& enemy){
 •	    switch (mecanic)
 •	    {
@@ -136,6 +158,8 @@ En funciones como playEnemyAttack y rockPaperScisors, donde el valor pasado dete
 •	}
 
 También se implementó switch en funciones dedicadas a mostrar elementos visuales en consola. Estas funciones reciben parámetros numéricos y, mediante estructuras switch, determinan qué texto, diseño o personaje mostrar en pantalla. Cada valor representa una escena específica, un enemigo o un mensaje personalizado que forma parte de la interfaz del usuario.
+
+
 •	void showEnemy(int playerLevel){
 •	    switch (playerLevel) {
 •	    case 1: worm(); break;
@@ -153,6 +177,8 @@ También se implementó switch en funciones dedicadas a mostrar elementos visual
 
 Ciclos (for, while, do while)
 El ciclo for se utilizó, por ejemplo, en la mecánica del juego de memoria, se genera una secuencia de números aleatorios que el jugador debe memorizar. El ciclo for se usa para crear y mostrar esta secuencia número por número, asegurando que la longitud de la secuencia se adapte al nivel de dificultad. También se emplea para controlar la cuenta regresiva que indica al jugador cuánto tiempo tiene para memorizar los números antes de que desaparezcan de la pantalla.
+
+
 •	    for (int i = 0; i < max; i++) {
 •	            nums[i] = randomNum(1, 9);
 •	            code += to_string(nums[i]);
@@ -166,7 +192,10 @@ El ciclo for se utilizó, por ejemplo, en la mecánica del juego de memoria, se 
 •	        }
 
 Ambos ciclos while y do while se utilizaron para mantener la ejecución continua de distintas partes del juego mientras se cumplan ciertas condiciones.
+
 Por ejemplo, durante la selección de acciones del jugador en combate, el menú permanecerá visible y activo hasta que el jugador o el enemigo pierdan toda su vida. También se usa en la mecánica de memoria para repetir la generación y validación de secuencias hasta que el jugador alcance la cantidad de aciertos necesarios o agote sus intentos.
+
+
 •	do
 •	    {   
 •	        timer(1);
@@ -200,13 +229,19 @@ Por ejemplo, durante la selección de acciones del jugador en combate, el menú 
 •	
 
 Funciones
+
+
 •	Funciones de mecánicas de juego: Cada una de las tres mecánicas principales (azar, memoria, piedra-papel-tijeras) tiene su propia función dedicada, donde se controla la lógica de esa mecánica, la interacción del jugador, y el impacto en el combate.
 •	Funciones de menús: Para manejar la interacción del jugador con el juego, como seleccionar opciones de inicio, escoger acciones durante el combate, o navegar entre niveles.
 •	Funciones de combate: Incluyen métodos para calcular daño recibido y causado, tanto para el jugador como para el enemigo. 
 •	Funciones para la gestión de items: Permiten al jugador usar objetos que restauran vida o mejoran atributos, controlando la cantidad de ítems disponibles y su efecto.
 •	Funciones para la interfaz y animaciones: Estas funciones manejan la presentación en pantalla, como mostrar animaciones de daño, actualizar el estado visual de enemigos y personajes, y mostrar textos con formato especial según la situación.
 •	Funciones generadoras de enemigos: Se encargan de crear enemigos con parámetros específicos de vida, ataque y mecánica, ajustando la dificultad de cada nivel.
+
+
 Algunos ejemplos de funciones:
+
+
 •	void Player::useItem(){
 •	    if (items != 0)
 •	    {
@@ -224,6 +259,8 @@ Algunos ejemplos de funciones:
 •	
 
 Interfaz por Consola
+
+
 Para ofrecer una experiencia atractiva pese a ser un juego en consola, se implementaron varias técnicas:
 •	Arte ASCII: Se diseñaron gráficos con caracteres para representar enemigos, personajes y elementos del juego, dándole personalidad y estilo visual único.
 •	Pantallas de carga: Se usan para suavizar el paso entre niveles o escenas, evitando que el cambio sea abrupto.
@@ -233,9 +270,15 @@ Para ofrecer una experiencia atractiva pese a ser un juego en consola, se implem
 ![alt text](image-1.png)
 
 Estructuras de Datos
+
+
 En este proyecto se utilizaron estructuras (struct) para representar a los personajes del juego: el jugador y los enemigos. Cada estructura contiene tanto datos como funciones asociadas, lo que permite organizar y manipular fácilmente el comportamiento de cada entidad.
+
+
 •	La estructura Player almacena atributos como la vida actual y máxima, el daño, el número de ítems disponibles, y el nivel. Además, incluye funciones para recibir daño, usar objetos, aumentar estadísticas y verificar si sigue con vida.
 •	La estructura Enemy contiene la vida, el daño que puede causar, y el tipo de mecánica que utiliza en combate. También tiene funciones para atacar, recibir daño, comprobar si está vivo y ejecutar su mecánica de ataque.
+
+
 •	struct Player
 •	{
 •	    int life = 3;
@@ -276,7 +319,11 @@ En este proyecto se utilizaron estructuras (struct) para representar a los perso
 •	};
 
 Manejo de Archivos
+
+
 El juego incluye una funcionalidad de guardado y carga de partida mediante el uso de archivos .txt. Esta característica permite al jugador continuar su progreso en sesiones futuras.
+
+
 •	La función save() guarda el estado del jugador (vida, vida máxima, daño, ítems y nivel) en un archivo temporal (temp.txt). Luego, este archivo reemplaza al archivo principal de datos (data.txt) si la escritura fue exitosa.
 •	La función load() intenta leer los datos del jugador desde data.txt. Si el archivo existe y tiene un formato válido, los datos se cargan en la estructura del jugador. En caso de que el archivo no exista, se crea automáticamente usando la función save().
 •	//Save game
@@ -329,8 +376,12 @@ El juego incluye una funcionalidad de guardado y carga de partida mediante el us
 •	}
 
 Manejo de Errores
+
+
 El juego incluye manejo básico de errores a través de validaciones en la entrada del usuario.
 Por ejemplo:
+
+
 •	Se verifica que el jugador no ingrese valores fuera del rango esperado en menús o mecánicas.
 •	Si el jugador ingresa un dato no numérico, se limpia el flujo de entrada y se repite la solicitud.
 •	Se controlan situaciones como intentar usar un ítem cuando no se tienen disponibles, mostrando un mensaje informativo en lugar de provocar un error en el programa.
@@ -346,18 +397,27 @@ Estas medidas aseguran que el juego funcione de manera estable, incluso si el ju
 •	    else return false;
 •	}
 
+
 Consideraciones Técnicas del Desarrollo
+
+
 •	El juego fue desarrollado en C++ utilizando el entorno de desarrollo Visual Studio Code.
 •	Se utilizaron únicamente librerías estándar y del sistema, sin depender de bibliotecas externas. Algunas de las más importantes fueron:
+
+
 o	iostream: para entrada y salida estándar.
 o	fstream: para manejo de archivos.
 o	cstdlib, random: para generación de números aleatorios.
 o	thread, chrono: para manejo de tiempos, animaciones simples y temporizadores.
 o	unistd.h: para compatibilidad con sistemas Unix/Linux.
 o	windows.h: para comandos específicos de Windows (por ejemplo, control de color en la consola).
-•	El proyecto está estructurado con un archivo principal main.cpp y una carpeta src/ que contiene los módulos del juego. Cada módulo está dividido en un archivo .h para las declaraciones de funciones y un archivo .cpp para su implementación.
+•	El proyecto está estructurado con un archivo principal main.cpp y una carpeta src/ que contiene los módulos del juego.
+
+Cada módulo está dividido en un archivo .h para las declaraciones de funciones y un archivo .cpp para su implementación.
+
+
 •	El juego se ejecuta exclusivamente en consola, sin interfaz gráfica avanzada. Por esta razón, se desarrolló una interfaz visual usando arte ASCII, simulando animaciones, personajes y pantallas de combate.
-•	Es compatible con Windows y Linux. En Linux puede compilarse directamente in ningún requisito de instalación. En Windows, es necesario instalar previamente un compilador compatible como MinGW o MSYS2, que incluya g++, para poder compilar y ejecutar el código correctamente con g++ -std=c++17. 
+•	Es compatible con Windows y Linux. En Linux puede compilarse directamente sin ningún requisito de instalación. En Windows, es necesario instalar previamente un compilador compatible como MinGW o MSYS2, que incluya g++, para poder compilar y ejecutar el código correctamente con g++ -std=c++17. 
 •	El juego es para un solo jugador y se centra en avanzar a través de niveles derrotando enemigos con distintas mecánicas.
 •	Un desafío importante fue la compatibilidad entre sistemas operativos, ya que el desarrollo se realizó en paralelo entre Windows y Linux. Fue necesario adaptar ciertas instrucciones, como la limpieza de pantalla o el cambio de color en textos, para asegurar el mismo comportamiento en ambos entornos.
 
@@ -453,10 +513,10 @@ Si el jugador pierde (!playerAlive): se reinicia y vuelve al menú.
 
 Si gana (!enemyAlive): sube de nivel, recibe premios y guarda progreso.
 
-En modo infinito: el jugador recibe un nivel aleatorio y se acumulan estadísticas especiales (player.infinite).
+En modo infinito: el jugador recibe un nivel aleatorio y se cuenta el nivel de enemigos derotados (player.infinite).
 
  5. Rutas alternativas y atajos (useShortcut)
-Algunos niveles ofrecen rutas rápidas (por ejemplo, del nivel 2 al 7). Si el jugador elige tomarlas, puede avanzar más rápido. La función useShortcut se encarga de manejar estas decisiones.
+Algunos niveles ofrecen rutas rápidas. Si el jugador elige tomarlas, puede avanzar más rápido. La función useShortcut se encarga de manejar estas decisiones.
 
  6. Modo infinito (infiniteLevels)
 Este modo genera niveles sin fin con enemigos y parámetros aleatorios. Se usa en combinación con randomNum(...) para variar la dificultad. Sirve como un desafío de resistencia o puntuación alta, y se guarda el progreso por separado con infiniteSave.
