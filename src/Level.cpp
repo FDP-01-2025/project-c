@@ -58,8 +58,11 @@ void useShortcut(Player& player, int shortcut){
         switch (option)
         {
         case 1:
-            player.lvl = shortcut;
-            levelTxt(6);
+            if (player.lvl != 100)
+            {
+                player.lvl = shortcut;
+                levelTxt(6);
+            }
             break;
         case 2:
             levelTxt(7);
@@ -166,6 +169,7 @@ void levelSelector(int lvl, Player& player){
             levelTxt(11);
             timer(2);
             player = {3, 3, 1, 0, 1};
+            save(player);
             principalMenu();
             break;
         case 2:
@@ -194,6 +198,7 @@ void levelSelector(int lvl, Player& player){
     }
 }
 
+//Levels operation / Infinite levels
 void infiniteLevels(int lvl, Player& player){
     int parameters[3];
     Enemy enemy;
