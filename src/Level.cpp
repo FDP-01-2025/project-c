@@ -267,6 +267,7 @@ void infiniteLevels(int lvl, Player& player){
             parameters[0] = 5;
         }
         enemy = generateEnemy(randomNum(1,12), randomNum(1,9), 1);
+        combatMenu(parameters, 3, player, enemy);
         nextLevel(player.alive(), enemy.alive(), player, false, true);
         break;
     case 10:

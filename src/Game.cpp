@@ -9,6 +9,5 @@ void game(){
 void infiniteMode(){
     Player player;
     infiniteLoad(player);
-    player.lvl = randomNum(1,10);
     infiniteLevels(player.lvl, player);
 }
