@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "UI.h"
 #include <iostream>
 using namespace std;
 
@@ -14,7 +15,7 @@ void Player::useItem(){
         if (life > lifeMax) life = lifeMax;        
         items--;
     }
-    else cout<<"You haven't items to use"<<endl;
+    else playerTxt();
 }
 
 void Player::addItem(){

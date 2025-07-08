@@ -1,10 +1,11 @@
 #include "Level.h"
+#include "UI.h"
 
 void nextLevel(bool playerAlive, bool enemyAlive, Player& player, bool isInShortcut, bool infinite){
     if (!playerAlive)
     {
         player = {3,3,1,0,1,0};
-        cout<<"GAME OVER"<<endl;
+        levelTxt(1);
         if (infinite)
         {
             infiniteSave(player);
@@ -19,12 +20,12 @@ void nextLevel(bool playerAlive, bool enemyAlive, Player& player, bool isInShort
     else if (!enemyAlive)
     {
         
-        cout<<"You win"<<endl;
+        levelTxt(2);
         if (infinite)
         {
             player.lvl = randomNum(1,10);
             player.infinite++;
-            cout<<"Enemies defeated: "<<player.infinite<<endl;
+            cout<<"𝗘𝗡𝗘𝗠𝗜𝗘𝗦 𝗗𝗘𝗙𝗘𝗔𝗧𝗘𝗗 :"<<player.infinite<<endl;
             infinitePrizes(player);
             infiniteSave(player);
         }
@@ -45,28 +46,26 @@ void useShortcut(Player& player, int shortcut){
     {
         if (shortcut == 7)
         {
-            cout<<"Do you want to take a shortcut?"<<endl;
+            levelTxt(3);
         }
         else
         {
-            cout<<"Do you want to take an alter path?"<<endl;
-            cout<<"You could win better rewards >;D"<<endl;
+            levelTxt(4);
         }
-        cout<<"Enemies gona be more dangerous"<<endl;
-        cout<<"1. Yes\n2. No"<<endl;
+        levelTxt(5);
         cin>>option;
         
         switch (option)
         {
         case 1:
             player.lvl = shortcut;
-            cout<<"Entering the shortcut >:)"<<endl;
+            levelTxt(6);
             break;
         case 2:
-            cout<<"Continuing normal path"<<endl;
+            levelTxt(7);
             break;
         default:
-            cout<<"It isn't a valid option"<<endl;
+            invalid();
             useShortcut(player, shortcut);
             break;
         }
@@ -158,25 +157,24 @@ void levelSelector(int lvl, Player& player){
     
     case 100:
         save(player);
-        cout<<"You've win the game"<<endl;
-        cout<<"Do you want to reset your progress?"<<endl;
-        cout<<"1. Yes\n2. No"<<endl;
+        levelTxt(8);
+        levelTxt(9);
         cin>>restart;
         switch (restart)
         {
         case 1:
-            cout<<"Restarting"<<endl;
+            levelTxt(11);
             timer(2);
             player = {3, 3, 1, 0, 1};
             principalMenu();
             break;
         case 2:
             save(player);
-            cout<<"Leaving the game"<<endl;
+            levelTxt(10);
             timer(2);
             exit(0);        
         default:
-            cout<<"It isn't a valid option"<<endl;
+            invalid();
             break;
         }
         
@@ -184,8 +182,8 @@ void levelSelector(int lvl, Player& player){
         break;
 
     default:
-        cout<<"DATA ERROR"<<endl;
-        cout<<"Restarting progress"<<endl;
+        levelTxt(12);
+        levelTxt(11);
         timer(2);
         player = {3, 3, 1, 0, 1};
         break;
@@ -278,8 +276,8 @@ void infiniteLevels(int lvl, Player& player){
         break;
         
     default:
-        cout<<"DATA ERROR"<<endl;
-        cout<<"Restarting progress"<<endl;
+        levelTxt(12);
+        levelTxt(11);
         timer(2);
         player = {3, 3, 1, 0, 1};
         break;

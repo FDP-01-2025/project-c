@@ -1,4 +1,5 @@
 #include "Items.h"
+#include "UI.h"
 #include <iostream>
 using namespace std;
 
@@ -14,17 +15,17 @@ void prizes(Player& player, bool shortcut){
             win = 0;        
             if (randomNum(1,2) == 1)
             {
-                cout<<"You win a max life increase"<<endl;
+                itemsText(1);
                 player.lifeMax += 1;
                 win++;
             }
             if (randomNum(1,4) == 1)
             {
-                cout<<"You win a damage increase"<<endl;
+                itemsText(2);
                 player.damage += 1;
                 win++;
             }
-            cout<<"You win a life potion"<<endl;
+                itemsText(3);
             player.items += 1;
             win++;
         } while (randomNum(1,2) == 1 && win != 3);
@@ -32,8 +33,8 @@ void prizes(Player& player, bool shortcut){
         //if you're lucky you can win the game of this way
         if (win == 3)
         {
-            cout<<"You've win the great jackpot"<<endl;
-            cout<<"You've win the game"<<endl;
+            itemsText(4);
+            itemsText(5);
             player.lvl = 100;
         }
     }
@@ -45,19 +46,19 @@ void prizes(Player& player, bool shortcut){
             win = 0;
             if (randomNum(1,3) == 1)
             {
-                cout<<"You win a max life increase"<<endl;
+                itemsText(1);
                 player.lifeMax += 1;
                 win++;
             }
             if (randomNum(1,7) == 1)
             {
-                cout<<"You win a damage increase"<<endl;
+                itemsText(2);
                 player.damage += 1;
                 win++;
             }
             if (randomNum(1,2) == 1)
             {
-                cout<<"You win a life potion"<<endl;
+                itemsText(3);
                 player.items += 1;
                 win++;
             }
@@ -66,8 +67,8 @@ void prizes(Player& player, bool shortcut){
         //You've to be very lucky if you win ts .___.
         if (win == 3)
         {
-            cout<<"You've win the great jackpot"<<endl;
-            cout<<"You've win the game"<<endl;
+            itemsText(4);
+            itemsText(5);
             player.lvl = 100;
         }
     }
@@ -80,15 +81,15 @@ void infinitePrizes(Player& player){
     {
         if (randomNum(1,3) == 1 && player.life < 10)
         {
-            cout<<"You win a max life increase"<<endl;
+            itemsText(1);
             player.lifeMax += 1;
         }
         if (randomNum(1,5) == 1 && player.damage < 10)
         {
-            cout<<"You win a damage increase"<<endl;
+            itemsText(2);
             player.damage += 1;
         }
-        cout<<"You win a life potion"<<endl;
+        itemsText(3);
         player.items += 1;
     } while (randomNum(1,3) == 1);
 

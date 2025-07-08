@@ -56,3 +56,16 @@ void clearScreen();
 void UTF8Config();
 
 void loadingScreen();
+
+void secondMenu(int option, Player& player, Enemy& enemy);
+
+void invalid();
+
+void itemsText(int option);
+
+void levelTxt(int option);
+
+void playerTxt();
+
+void utilitesTxt(int option);
+

@@ -7,11 +7,9 @@ void combatMenu(int parameters[], int size, Player& player, Enemy& enemy){
     {   
         timer(1);
         clearScreen();
-        cout<<"Select an option"<<endl;
-        cout<<"1. Fight\n2. Use potion "<<player.items<<"\n3. Exit"<<endl;
-        cout<<endl;
-        cout<<"Life: "<<player.life<<"/"<<player.lifeMax<<"       Enemy life: "<<enemy.life<<endl;
-        cout<<"Damage: "<<player.damage<<"       Enemy damage: "<<enemy.damage<<endl;
+        secondMenu(2, player, enemy);
+        secondMenu(3, player, enemy);
+        secondMenu(1, player, enemy);
         cin>>option;
         cinControl();
 
@@ -27,7 +25,7 @@ void combatMenu(int parameters[], int size, Player& player, Enemy& enemy){
             exit(0);
             break;
         default:
-            cout<<"It isn't a valid option"<<endl;
+            invalid();
             break;
         }
     }while (player.alive() && enemy.alive());    

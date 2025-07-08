@@ -47,11 +47,11 @@ void save(Player& player)
     {
         remove("data.txt");
         rename("temp.txt", "data.txt");
-        cout<<"SAVED"<<endl;
+        utilitesTxt(1);
     }
     else
     {
-        cout<<"SAVE ERROR"<<endl;
+        utilitesTxt(2);
     }
 }
 
@@ -72,7 +72,7 @@ void load(Player& player)
         }
         else
         {
-            cout << "LOAD ERROR: Invalid file format" << endl;
+            utilitesTxt(3);
         }
 
         file.close();
@@ -101,11 +101,11 @@ void infiniteSave(Player& player)
     {
         remove("infiniteData.txt");
         rename("temp.txt", "infiniteData.txt");
-        cout<<"SAVED"<<endl;
+        utilitesTxt(1);
     }
     else
     {
-        cout<<"SAVE ERROR"<<endl;
+        utilitesTxt(2);
     }
 }
 
@@ -122,11 +122,11 @@ void infiniteLoad(Player& player)
         {
             player = {life, lifeMax, damage, items, lvl, infinite};
             
-                cout << "LOAD"<<endl;
+                utilitesTxt(4);
         }
         else
         {
-            cout << "LOAD ERROR: Invalid file format" << endl;
+            utilitesTxt(3);
         }
 
         file.close();
@@ -142,7 +142,7 @@ bool cinControl(){
     if (cin.fail()) {
             cin.clear();
             cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-            cout << "It isn't a valid option"<<endl;
+            invalid();
             return true;
         }
     else return false;
